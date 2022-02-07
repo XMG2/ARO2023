@@ -1,1 +1,1 @@
-Primera prueba de un commit desde Android Studio
+Repositorio para las aplicaciones de Arquitectura del software
