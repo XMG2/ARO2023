@@ -13,6 +13,7 @@ public class MateriaPrima extends Elemento {
         super(nombre, descripcion,cantidad,Tipo.MATERIAPRIMA);
         this.compuesto = compuesto;
         this.tamano = new Tamano(alto,ancho,largo);
+        ////
     }
 
     public String getCompuesto() {
