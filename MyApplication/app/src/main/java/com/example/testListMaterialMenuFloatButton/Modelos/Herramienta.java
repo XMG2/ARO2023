@@ -5,7 +5,7 @@ public class Herramienta extends Elemento{
     Funcion funcion;
 
     public Herramienta(String nombre, String descripcion, int cantidad, Funcion funcion) {
-        super(nombre, descripcion, cantidad);
+        super(nombre, descripcion, cantidad,Tipo.HERRAMIENTA);
         this.funcion = funcion;
     }
 

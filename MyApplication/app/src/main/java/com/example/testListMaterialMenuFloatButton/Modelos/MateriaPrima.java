@@ -4,13 +4,13 @@ public class MateriaPrima extends Elemento {
     String compuesto;
     Tamano tamano;
     public MateriaPrima(String nombre, String descripcion,String compuesto, Double diametro, Double largo,int cantidad) {
-        super(nombre, descripcion,cantidad);
+        super(nombre, descripcion,cantidad,Tipo.MATERIAPRIMA);
         this.compuesto = compuesto;
         this.tamano = new Tamano(diametro,largo);
     }
 
     public MateriaPrima(String nombre, String descripcion, String compuesto,Double alto,Double ancho, Double largo,int cantidad) {
-        super(nombre, descripcion,cantidad);
+        super(nombre, descripcion,cantidad,Tipo.MATERIAPRIMA);
         this.compuesto = compuesto;
         this.tamano = new Tamano(alto,ancho,largo);
     }

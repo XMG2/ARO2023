@@ -4,13 +4,20 @@ public class Elemento {
     String nombre;
     String descripcion;
     int cantidad;
-
+    enum Tipo{MATERIAPRIMA,HERRAMIENTA,ELEMENTOPRODUCIDO}
+    Tipo tipo;
     public Elemento(String nombre, String descripcion, int cantidad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
     }
 
+    public Elemento(String nombre, String descripcion, int cantidad, Tipo tipo) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.cantidad = cantidad;
+        this.tipo = tipo;
+    }
 
     public String getNombre() {
         return nombre;
@@ -34,6 +41,14 @@ public class Elemento {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
 
     @Override

@@ -1,13 +1,19 @@
 package com.example.testListMaterialMenuFloatButton.Modelos;
 
-public class ElementoProducido {
+public class ElementoProducido extends Elemento{
     String compuesto;
     Tamano tamano;
-    float precio;
+    Double precio;
 
-    public ElementoProducido(String compuesto, Double alto,Double ancho, Double largo, float precio) {
+    /*public ElementoProducido(String compuesto, Double alto,Double ancho, Double largo, Double precio) {
         this.compuesto = compuesto;
         this.tamano = new Tamano(alto,ancho,largo);
+        this.precio = precio;
+    }*/
+
+    public ElementoProducido(String nombre, String descripcion, int cantidad, String compuesto, Double precio) {
+        super(nombre, descripcion, cantidad,Tipo.ELEMENTOPRODUCIDO);
+        this.compuesto = compuesto;
         this.precio = precio;
     }
 
@@ -27,11 +33,11 @@ public class ElementoProducido {
         this.tamano = tamano;
     }
 
-    public float getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 }
