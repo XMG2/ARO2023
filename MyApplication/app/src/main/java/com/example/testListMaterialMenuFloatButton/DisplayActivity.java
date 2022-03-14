@@ -6,18 +6,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.testListMaterialMenuFloatButton.Modelos.ElementoProducido;
+import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
+import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
+
 public class DisplayActivity extends AppCompatActivity {
 
     int position;
     ElementosDeViajeApp eva;
+    ElementoProducido producido;
+    MateriaPrima prima;
+    Herramienta herramienta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display);
         eva = (ElementosDeViajeApp)getApplicationContext();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         position = bundle.getInt("position");
+        System.out.println(eva.elementoList.get(position).getClass().toString());
+
+        setContentView(R.layout.activity_display);
+
         /*TextView textView = ((TextView) findViewById(R.id.textViewTitle2));
         textView.setTextSize(20);
         textView.setText(eva.elementoList.get(position).toString());
