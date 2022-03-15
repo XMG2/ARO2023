@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.testListMaterialMenuFloatButton.Modelos.Elemento;
+import com.example.testListMaterialMenuFloatButton.Modelos.ElementoAdapter;
 import com.example.testListMaterialMenuFloatButton.databinding.ActivityMainBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -26,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int SHOW_SUBACTIVITY = 1;
     private static final int SHOW_ADDACTIVITY = 2;
     ElementosDeViajeApp eva;
-    ArrayAdapter<Elemento> todoItemsAdapter;
+    ElementoAdapter todoItemsAdapter;
+    //ArrayAdapter<Elemento> todoItemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listview);
         eva = (ElementosDeViajeApp)getApplicationContext();
 
-        todoItemsAdapter = new ArrayAdapter<Elemento>(this, R.layout.row_layout, R.id.listText, eva.elementoList);
+        todoItemsAdapter = new ElementoAdapter(this, eva.elementoList);
 
         listView.setAdapter(todoItemsAdapter);
 
