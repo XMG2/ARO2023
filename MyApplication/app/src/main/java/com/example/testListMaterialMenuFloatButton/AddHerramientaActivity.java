@@ -23,7 +23,7 @@ public class AddHerramientaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_herramienta);
         eva = (ElementosDeViajeApp)getApplicationContext();
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.funcionesHerramienta, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

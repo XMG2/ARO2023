@@ -33,9 +33,11 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
         ancho.setVisibility(View.INVISIBLE);
         largo.setVisibility(View.INVISIBLE);
         diametro.setVisibility(View.INVISIBLE);
+
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         RadioButton cilindro = (RadioButton) findViewById(R.id.radioButton3);
         RadioButton rectangulo = (RadioButton) findViewById(R.id.radioButton5);
+
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,14 +48,14 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
                 RadioButton radioButton = (RadioButton) findViewById(selectedId);
                 if(radioGroup.getCheckedRadioButtonId() == R.id.radioButton3){
                     // one of the radio buttons is checked
-                    System.out.println("circular");
+                    //System.out.println("circular");
                     alto.setVisibility(View.INVISIBLE);
                     ancho.setVisibility(View.INVISIBLE);
                     largo.setVisibility(View.VISIBLE);
                     diametro.setVisibility(View.VISIBLE);
                 }else if(radioGroup.getCheckedRadioButtonId() == R.id.radioButton5){
                     // one of the radio buttons is checked
-                    System.out.println("rectangular");
+                    //System.out.println("rectangular");
                     alto.setVisibility(View.VISIBLE);
                     ancho.setVisibility(View.VISIBLE);
                     largo.setVisibility(View.VISIBLE);
@@ -87,7 +89,7 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
                 editText5 = (EditText) findViewById(R.id.editTextNumber);
                 cantidad =  Integer.parseInt(editText5.getText().toString());
                 eva.elementoList.add(new MateriaPrima(nombre,descripcion,composicion,diametro,largo,cantidad));
-                //System.out.println(composicion+descripcion+diametro+largo);
+
                 break;
             case(R.id.radioButton5):
                 editText6 = (EditText) findViewById(R.id.editTextTextPersonName6);

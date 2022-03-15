@@ -28,12 +28,7 @@ public class DisplayActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_display);
 
-        /*TextView textView = ((TextView) findViewById(R.id.textViewTitle2));
-        textView.setTextSize(20);
-        textView.setText(eva.elementoList.get(position).toString());
-        TextView textView2 =((TextView) findViewById(R.id.textViewName));
-        textView2.setTextSize(20);
-        textView2.setText(eva.elementoList.get(position).toString());*/
+
     }
 
     public void goBack(View view){
