@@ -11,13 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialDesign">
         <activity
-            android:name=".DisplayMateriaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DisplayProducidoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DisplayHerramientaActivity"
+            android:name=".DisplayActivity"
             android:exported="false" />
         <activity
             android:name=".AddElementoProducidoActivity"

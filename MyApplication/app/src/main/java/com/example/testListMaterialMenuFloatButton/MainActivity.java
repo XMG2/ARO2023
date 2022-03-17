@@ -55,17 +55,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent;
                 switch (elemento.getTipo(1)){
                     case "HERRAMIENTA":
-                        intent = new Intent(getApplicationContext(), DisplayHerramientaActivity.class);
+                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
                         intent.putExtras(bundle);
                         startActivityForResult(intent, SHOW_SUBACTIVITY);
                         break;
                     case "ELEMENTOPRODUCIDO":
-                        intent = new Intent(getApplicationContext(), DisplayProducidoActivity.class);
+                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
                         intent.putExtras(bundle);
                         startActivityForResult(intent, SHOW_SUBACTIVITY);
                         break;
                     case "MATERIAPRIMA":
-                        intent = new Intent(getApplicationContext(), DisplayMateriaActivity.class);
+                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
                         intent.putExtras(bundle);
                         startActivityForResult(intent, SHOW_SUBACTIVITY);
                         break;
