@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.example.testListMaterialMenuFloatButton.Modelos.Elemento;
 import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
+import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
 
 public class DisplayActivity extends AppCompatActivity {
     private ElementosDeViajeApp eva;
@@ -26,16 +27,18 @@ public class DisplayActivity extends AppCompatActivity {
         switch (elemento.getTipo(1)){
             case "HERRAMIENTA":
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerViewHerramienta,new HerramientaDisplayFragment((Herramienta) eva.elementoList.get(position)),null)
+                        .replace(R.id.fragmentContainerViewHerramienta,new HerramientaDisplayFragment((Herramienta) elemento),null)
                         .setReorderingAllowed(true).commit();
                 break;
             case "ELEMENTOPRODUCIDO":
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerViewHerramienta,new HerramientaDisplayFragment((Herramienta) eva.elementoList.get(position)),null)
+                        .replace(R.id.fragmentContainerViewHerramienta,new HerramientaDisplayFragment((Herramienta) elemento),null)
                         .setReorderingAllowed(true).commit();
                 break;
             case "MATERIAPRIMA":
-
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerViewMateria,new MateriaPrimaDisplayFragment((MateriaPrima) eva.elementoList.get(position)),null)
+                        .setReorderingAllowed(true).commit();
                 break;
 
         }

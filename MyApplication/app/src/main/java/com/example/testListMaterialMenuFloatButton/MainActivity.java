@@ -15,6 +15,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.testListMaterialMenuFloatButton.Modelos.Elemento;
 import com.example.testListMaterialMenuFloatButton.Modelos.ElementoAdapter;
+import com.example.testListMaterialMenuFloatButton.Modelos.ElementoProducido;
+import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
+import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
 import com.example.testListMaterialMenuFloatButton.databinding.ActivityMainBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -40,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         listView = (ListView) findViewById(R.id.listview);
         eva = (ElementosDeViajeApp)getApplicationContext();
-
+        eva.elementoList.add(new MateriaPrima("materia","cofasdf","asdfasd",2.0,2.0,2));
+        eva.elementoList.add(new Herramienta("fasdf","fasfs", 2, Herramienta.Funcion.APRETAR));
+        eva.elementoList.add(new ElementoProducido("asdfasdf","fasdfas",1,"asdfasdfasdf",30.0));
         todoItemsAdapter = new ElementoAdapter(this, eva.elementoList);
 
         listView.setAdapter(todoItemsAdapter);
@@ -56,20 +61,23 @@ public class MainActivity extends AppCompatActivity {
                 switch (elemento.getTipo(1)){
                     case "HERRAMIENTA":
                         intent = new Intent(getApplicationContext(), DisplayActivity.class);
-                        intent.putExtras(bundle);
-                        startActivityForResult(intent, SHOW_SUBACTIVITY);
+
                         break;
                     case "ELEMENTOPRODUCIDO":
                         intent = new Intent(getApplicationContext(), DisplayActivity.class);
-                        intent.putExtras(bundle);
-                        startActivityForResult(intent, SHOW_SUBACTIVITY);
+
                         break;
                     case "MATERIAPRIMA":
                         intent = new Intent(getApplicationContext(), DisplayActivity.class);
+
+                        break;
+                    default:
+                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
                         intent.putExtras(bundle);
                         startActivityForResult(intent, SHOW_SUBACTIVITY);
-                        break;
                 }
+                intent.putExtras(bundle);
+                startActivityForResult(intent, SHOW_SUBACTIVITY);
 
             }
         });

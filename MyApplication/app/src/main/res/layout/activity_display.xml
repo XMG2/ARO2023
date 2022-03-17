@@ -7,18 +7,14 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton8"
+        android:id="@+id/floatingActionButton7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:clickable="true"
         android:onClick="volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:backgroundTint="#1565C0"
+        android:layout_gravity="bottom"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -54,5 +50,12 @@
         android:layout_height="match_parent"
 
         />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerViewMateria"
+        android:name="com.example.testListMaterialMenuFloatButton.MateriaPrimaDisplayFragment"
+        android:layout_width="match_parent"
+        android:layout_height="555dp"
+        android:layout_gravity="bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
