@@ -44,18 +44,14 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerViewHerramienta"
+        android:id="@+id/fragmentContainerView"
         android:name="com.example.testListMaterialMenuFloatButton.HerramientaDisplayFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:layout_marginTop="49dp"
+        android:layout_gravity="bottom"
         />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerViewMateria"
-        android:name="com.example.testListMaterialMenuFloatButton.MateriaPrimaDisplayFragment"
-        android:layout_width="match_parent"
-        android:layout_height="555dp"
-        android:layout_gravity="bottom" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

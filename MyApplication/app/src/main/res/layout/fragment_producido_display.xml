@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MateriaPrimaDisplayFragment">
+    tools:context=".ProducidoDisplayFragment">
 
     <TextView
-        android:id="@+id/cantidadMateria"
+        android:id="@+id/cantidadProducido"
         android:layout_width="111dp"
         android:layout_height="47dp"
 
@@ -17,25 +17,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descripcionMateria"
-        app:layout_constraintVertical_bias="0.387" />
+        app:layout_constraintTop_toBottomOf="@+id/descripcionProducido"
+        app:layout_constraintVertical_bias="0.286" />
 
     <TextView
-        android:id="@+id/descripcionMateria"
+        android:id="@+id/descripcionProducido"
         android:layout_width="249dp"
         android:layout_height="152dp"
-
         android:text="TextView"
         android:textSize="14sp"
         android:textStyle="normal"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/compuesto"
-        app:layout_constraintVertical_bias="0.609" />
+        app:layout_constraintVertical_bias="0.516" />
 
     <TextView
-        android:id="@+id/nombreMateria2"
+        android:id="@+id/nombreProducido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -44,10 +45,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintHorizontal_bias="0.708"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintVertical_bias="0.027" />
 
     <TextView
         android:id="@+id/compuesto"
@@ -59,13 +60,13 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.828"
+        app:layout_constraintHorizontal_bias="0.694"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreMateria2"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreProducido"
+        app:layout_constraintVertical_bias="0.046" />
 
     <TextView
-        android:id="@+id/volumen"
+        android:id="@+id/precio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -76,18 +77,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/compuesto"
-        app:layout_constraintVertical_bias="0.38" />
+        app:layout_constraintVertical_bias="0.286" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="216dp"
-        android:layout_height="262dp"
-
-        android:src="@drawable/materiaprima"
+        android:id="@+id/imageView"
+        android:layout_width="178dp"
+        android:layout_height="185dp"
+        android:src="@drawable/elementoproducido"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.004"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.004" />
 </androidx.constraintlayout.widget.ConstraintLayout>

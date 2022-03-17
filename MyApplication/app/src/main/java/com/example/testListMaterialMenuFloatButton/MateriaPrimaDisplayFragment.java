@@ -48,7 +48,7 @@ public class MateriaPrimaDisplayFragment extends Fragment {
         textView1.setText(nombre);
         textView2.setText(descripcion);
         textView3.setText("Volumen: "+volumen);
-        textView4.setText("Cantidad: "+cantidad);
+        textView4.setText("Cantidad: " + cantidad);
         textView5.setText(compuesto);
         return view;
     }

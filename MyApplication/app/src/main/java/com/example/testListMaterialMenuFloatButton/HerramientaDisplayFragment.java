@@ -47,7 +47,7 @@ public class HerramientaDisplayFragment extends Fragment {
         textView1.setText(nombre);
         textView2.setText(descripcion);
         textView3.setText(funcion);
-        textView4.setText(""+cantidad);
+        textView4.setText("Cantidad: " + cantidad);
         return view;
     }
 
