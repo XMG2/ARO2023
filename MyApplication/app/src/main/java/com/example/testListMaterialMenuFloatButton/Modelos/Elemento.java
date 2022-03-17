@@ -46,6 +46,9 @@ public class Elemento {
     public Tipo getTipo() {
         return tipo;
     }
+    public String getTipo(int i){
+        return ""+tipo;
+    }
 
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;

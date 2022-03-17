@@ -50,9 +50,27 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("position", position);
-                Intent intent = new Intent(getApplicationContext(), DisplayActivity.class);
-                intent.putExtras(bundle);
-                startActivityForResult(intent, SHOW_SUBACTIVITY);
+                //System.out.println(eva.elementoList.get(position).getTipo(1));
+                Elemento elemento = eva.elementoList.get(position);
+                Intent intent;
+                switch (elemento.getTipo(1)){
+                    case "HERRAMIENTA":
+                        intent = new Intent(getApplicationContext(), DisplayHerramientaActivity.class);
+                        intent.putExtras(bundle);
+                        startActivityForResult(intent, SHOW_SUBACTIVITY);
+                        break;
+                    case "ELEMENTOPRODUCIDO":
+                        intent = new Intent(getApplicationContext(), DisplayProducidoActivity.class);
+                        intent.putExtras(bundle);
+                        startActivityForResult(intent, SHOW_SUBACTIVITY);
+                        break;
+                    case "MATERIAPRIMA":
+                        intent = new Intent(getApplicationContext(), DisplayMateriaActivity.class);
+                        intent.putExtras(bundle);
+                        startActivityForResult(intent, SHOW_SUBACTIVITY);
+                        break;
+                }
+
             }
         });
 

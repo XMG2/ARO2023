@@ -35,6 +35,8 @@
     <string name="herramienta">Herramienta</string>
     <string name="produccion">Elemento Producido</string>
     <string name="precio">Precio:(cm³/Centimos)</string>
+    <string name="modificate">Modificar</string>
+    <string name="display">Vista</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
