@@ -64,11 +64,56 @@ public class DisplayActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 switch(tabLayout.getSelectedTabPosition()){
                     case 0:
-                        System.out.println("heyyy");
+                        switch (elemento.getTipo(1)){
+                            case "HERRAMIENTA":
+
+                                fragmentManager.beginTransaction()
+                                        .replace(R.id.fragmentContainerView,new HerramientaDisplayFragment((Herramienta) elemento),null)
+                                        .setReorderingAllowed(true).commit();
+                                break;
+                            case "ELEMENTOPRODUCIDO":
+
+                                fragmentManager.beginTransaction()
+                                        .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment((ElementoProducido) elemento),null)
+                                        .setReorderingAllowed(true).commit();
+                                break;
+                            case "MATERIAPRIMA":
+
+
+                                fragmentManager.beginTransaction()
+                                        .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment((MateriaPrima) eva.elementoList.get(position)),null)
+                                        .setReorderingAllowed(true).commit();
+
+                                break;
+
+                        }
                         break;
                     case 1:
-                        System.out.println("asdfasdfasd");
+                        switch (elemento.getTipo(1)){
+                            case "HERRAMIENTA":
+
+                                fragmentManager.beginTransaction()
+                                        .replace(R.id.fragmentContainerView,new HerramientaModifyFragment((Herramienta) elemento,eva.elementoList,position),null)
+                                        .setReorderingAllowed(true).commit();
+                                break;
+                            case "ELEMENTOPRODUCIDO":
+
+                                fragmentManager.beginTransaction()
+                                        .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment((ElementoProducido) elemento),null)
+                                        .setReorderingAllowed(true).commit();
+                                break;
+                            case "MATERIAPRIMA":
+
+
+                                fragmentManager.beginTransaction()
+                                        .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment((MateriaPrima) eva.elementoList.get(position)),null)
+                                        .setReorderingAllowed(true).commit();
+
+                                break;
+
+                        }
                         break;
+
                 }
             }
 
@@ -100,6 +145,13 @@ public class DisplayActivity extends AppCompatActivity {
     public void volver(View view) {
         Intent intent = new Intent();
         setResult(Activity.RESULT_CANCELED, intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        setResult(Activity.RESULT_OK, intent);
         finish();
     }
 }
