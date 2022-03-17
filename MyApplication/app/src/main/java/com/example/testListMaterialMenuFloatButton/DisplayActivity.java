@@ -26,30 +26,7 @@ public class DisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
 
-        TabLayout tabLayout = findViewById(R.id.tabs);
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch(tabLayout.getSelectedTabPosition()){
-                    case 0:
-                        System.out.println("heyyy");
-                        break;
-                    case 1:
-                        System.out.println("asdfasdfasd");
-                        break;
-                }
-            }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
 
 
         eva = (ElementosDeViajeApp) getApplicationContext();
@@ -81,6 +58,30 @@ public class DisplayActivity extends AppCompatActivity {
                 break;
 
         }
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch(tabLayout.getSelectedTabPosition()){
+                    case 0:
+                        System.out.println("heyyy");
+                        break;
+                    case 1:
+                        System.out.println("asdfasdfasd");
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         //System.out.println("llego");
 
         //System.out.println("asdfasdf: "+i);
