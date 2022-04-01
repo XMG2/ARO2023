@@ -28,7 +28,7 @@ public class MateriaPrimaDisplayFragment extends Fragment {
     public MateriaPrimaDisplayFragment(MateriaPrima materia){
         nombre = materia.getNombre();
         descripcion = materia.getDescripcion();
-        compuesto = materia.getCompuesto();
+        compuesto = materia.getCompuesto().toString();
         volumen = ""+materia.getVolumen();
         cantidad = materia.getCantidad();
     }

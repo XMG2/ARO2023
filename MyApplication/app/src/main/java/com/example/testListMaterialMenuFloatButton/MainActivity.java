@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         listView = (ListView) findViewById(R.id.listview);
         eva = (ElementosDeViajeApp)getApplicationContext();
-        eva.elementoList.add(new MateriaPrima("materia","cofasdf","asdfasd",2.0,2.0,2));
+        eva.elementoList.add(new MateriaPrima("materia","cofasdf", MateriaPrima.Compuesto.ALUMINIO,2.0,2.0,2));
         eva.elementoList.add(new Herramienta("fasdf","fasfs", 2, Herramienta.Funcion.APRETAR));
         eva.elementoList.add(new ElementoProducido("asdfasdf","fasdfas",1,"asdfasdfasdf",30.0));
         todoItemsAdapter = new ElementoAdapter(this, eva.elementoList);

@@ -8,11 +8,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
 import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
 
 
@@ -20,6 +24,8 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
     ElementosDeViajeApp eva;
     TextView alto,ancho,largo,diametro;
     RadioGroup radioGroup;
+    MateriaPrima.Compuesto compuesto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,10 +73,46 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
         };
         cilindro.setOnClickListener(listener);
         rectangulo.setOnClickListener(listener);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner2);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.composicionMateria, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                //System.out.println(spinner.getSelectedItemId());
+                switch ((int)spinner.getSelectedItemId()) {
+                    case 1:
+                        compuesto = MateriaPrima.Compuesto.ALUMINIO;
+                        break;
+                    case 2:
+                        compuesto = MateriaPrima.Compuesto.ACERO;
+                        break;
+                    case 3:
+                        compuesto = MateriaPrima.Compuesto.TITANIO;
+                        break;
+                    case 4:
+                        compuesto = MateriaPrima.Compuesto.CARBONO;
+                        break;
+                    case 5:
+                        compuesto = MateriaPrima.Compuesto.NETHERITE;
+                        break;
+                    case 6:
+                        compuesto = MateriaPrima.Compuesto.NUKA_COLA;
+                        break;
+                    case 7:
+                        compuesto = MateriaPrima.Compuesto.VIBRANIUM;
+                        break;
+                }
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     public void addMateriaPrima(View view) {
-        String nombre,composicion,descripcion;
+        String nombre,descripcion;
         Double diametro,largo,alto,ancho;
         int cantidad;
         EditText editText,editText2,editText3,editText4,editText5,editText6,editText7;
@@ -78,8 +120,6 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
             case(R.id.radioButton3):
                 editText6 = (EditText) findViewById(R.id.editTextTextPersonName6);
                 nombre =  editText6.getText().toString();
-                editText = (EditText) findViewById(R.id.editTextTextPersonName);
-                composicion = editText.getText().toString();
                 editText2 = (EditText) findViewById(R.id.editTextTextMultiLine);
                 descripcion =editText2.getText().toString();
                 editText3 = (EditText) findViewById(R.id.editTextTextPersonName5);
@@ -88,14 +128,12 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
                 largo =Double.parseDouble(editText4.getText().toString());
                 editText5 = (EditText) findViewById(R.id.editTextNumber);
                 cantidad =  Integer.parseInt(editText5.getText().toString());
-                eva.elementoList.add(new MateriaPrima(nombre,descripcion,composicion,diametro,largo,cantidad));
+                eva.elementoList.add(new MateriaPrima(nombre,descripcion,compuesto,diametro,largo,cantidad));
 
                 break;
             case(R.id.radioButton5):
                 editText6 = (EditText) findViewById(R.id.editTextTextPersonName6);
                 nombre =  editText6.getText().toString();
-                editText = (EditText) findViewById(R.id.editTextTextPersonName);
-                composicion = editText.getText().toString();
                 editText2 = (EditText) findViewById(R.id.editTextTextMultiLine);
                 descripcion =editText2.getText().toString();
                 editText3 = (EditText) findViewById(R.id.editTextTextPersonName2);
@@ -106,7 +144,7 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
                 ancho = Double.parseDouble(editText5.getText().toString());
                 editText7 = (EditText) findViewById(R.id.editTextNumber);
                 cantidad =  Integer.parseInt(editText7.getText().toString());
-                eva.elementoList.add(new MateriaPrima(nombre,descripcion,composicion,alto,ancho,largo,cantidad));
+                eva.elementoList.add(new MateriaPrima(nombre,descripcion,compuesto,alto,ancho,largo,cantidad));
                 //System.out.println(composicion+descripcion+diametro+largo);
                 break;
         }

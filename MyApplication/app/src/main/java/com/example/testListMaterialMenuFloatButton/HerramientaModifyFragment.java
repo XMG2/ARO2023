@@ -18,10 +18,7 @@ import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * create an instance of this fragment.
- */
+
 public class HerramientaModifyFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
