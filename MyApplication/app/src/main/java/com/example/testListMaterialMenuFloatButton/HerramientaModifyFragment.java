@@ -20,7 +20,6 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HerramientaModifyFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class HerramientaModifyFragment extends Fragment {
@@ -34,6 +33,7 @@ public class HerramientaModifyFragment extends Fragment {
     private String nombre,descripcion;
     private int cantidad,position;
     private List<Elemento> list;
+    TextView textView1,textView2,textView3,textView4;
 
     public HerramientaModifyFragment() {
         // Required empty public constructor
@@ -52,9 +52,9 @@ public class HerramientaModifyFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_herramienta_modify,container,false);
-        TextView textView1 = (TextView)view.findViewById(R.id.editTextTextPersonName10);
-        TextView textView2 = (TextView)view.findViewById(R.id.editTextTextMultiLine4);
-        TextView textView4 = (TextView)view.findViewById(R.id.editTextNumber4);
+        textView1 = (TextView)view.findViewById(R.id.editTextTextPersonName10);
+        textView2 = (TextView)view.findViewById(R.id.editTextTextMultiLine4);
+        textView4 = (TextView)view.findViewById(R.id.editTextNumber4);
         textView1.setText(nombre);
         textView2.setText(descripcion);
         textView4.setText(""+cantidad);
@@ -62,9 +62,8 @@ public class HerramientaModifyFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText editText = (EditText) view.findViewById(R.id.editTextNumber4);
-                cantidad =  Integer.parseInt(editText.getText().toString()) +1;
-                editText.setText(""+cantidad);
+                cantidad =  Integer.parseInt(textView4.getText().toString()) +1;
+                textView4.setText(""+cantidad);
             }
         });
         Button button1 = (Button) view.findViewById(R.id.button7);
@@ -72,11 +71,10 @@ public class HerramientaModifyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int cantidad;
-                EditText editText = (EditText) view.findViewById(R.id.editTextNumber4);
-                cantidad =  Integer.parseInt(editText.getText().toString());
+                cantidad =  Integer.parseInt(textView4.getText().toString());
                 if(cantidad>1) {
                     cantidad--;
-                    editText.setText(""+cantidad);
+                    textView4.setText(""+cantidad);
                 }
             }
         });
@@ -84,9 +82,9 @@ public class HerramientaModifyFragment extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView textView1 = (TextView)view.findViewById(R.id.editTextTextPersonName10);
+                /*TextView textView1 = (TextView)view.findViewById(R.id.editTextTextPersonName10);
                 TextView textView2 = (TextView)view.findViewById(R.id.editTextTextMultiLine4);
-                TextView textView4 = (TextView)view.findViewById(R.id.editTextNumber4);
+                TextView textView4 = (TextView)view.findViewById(R.id.editTextNumber4);*/
                 nombre = textView1.getText().toString();
                 descripcion = textView2.getText().toString();
                 cantidad = Integer.parseInt(textView4.getText().toString());
