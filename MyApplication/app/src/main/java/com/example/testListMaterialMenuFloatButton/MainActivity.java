@@ -24,14 +24,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    //public List<String> nameList;
     private ListView listView;
     public ArrayAdapter<String> adapter;
     private static final int SHOW_SUBACTIVITY = 1;
     private static final int SHOW_ADDACTIVITY = 2;
     ElementosDeViajeApp eva;
     ElementoAdapter todoItemsAdapter;
-    //ArrayAdapter<Elemento> todoItemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -58,4 +58,5 @@ public class Elemento {
     public String toString() {
         return "" + nombre + ":\n" + descripcion + "\ncantidad: "+cantidad;
     }
+
 }

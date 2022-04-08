@@ -40,4 +40,5 @@ public class ElementoProducido extends Elemento{
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
+
 }

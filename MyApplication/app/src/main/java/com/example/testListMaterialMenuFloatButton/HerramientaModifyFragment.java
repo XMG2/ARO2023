@@ -1,36 +1,28 @@
 package com.example.testListMaterialMenuFloatButton;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.testListMaterialMenuFloatButton.Modelos.Elemento;
 import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class HerramientaModifyFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
     private String nombre,descripcion;
     private int cantidad,position;
     private List<Elemento> list;
-    TextView textView1,textView2,textView3,textView4;
+    TextView textView1,textView2,textView4;
 
     public HerramientaModifyFragment() {
         // Required empty public constructor
@@ -47,7 +39,6 @@ public class HerramientaModifyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_herramienta_modify,container,false);
         textView1 = (TextView)view.findViewById(R.id.editTextTextPersonName10);
         textView2 = (TextView)view.findViewById(R.id.editTextTextMultiLine4);
@@ -79,9 +70,6 @@ public class HerramientaModifyFragment extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*TextView textView1 = (TextView)view.findViewById(R.id.editTextTextPersonName10);
-                TextView textView2 = (TextView)view.findViewById(R.id.editTextTextMultiLine4);
-                TextView textView4 = (TextView)view.findViewById(R.id.editTextNumber4);*/
                 nombre = textView1.getText().toString();
                 descripcion = textView2.getText().toString();
                 cantidad = Integer.parseInt(textView4.getText().toString());

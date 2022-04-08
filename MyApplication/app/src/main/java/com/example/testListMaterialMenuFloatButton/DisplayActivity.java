@@ -25,10 +25,7 @@ public class DisplayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
-
-
-
-
+        TabLayout tabLayout = findViewById(R.id.tabs);
         eva = (ElementosDeViajeApp) getApplicationContext();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -44,21 +41,20 @@ public class DisplayActivity extends AppCompatActivity {
                 break;
             case "ELEMENTOPRODUCIDO":
 
+                tabLayout.getTabAt(1).view.setVisibility(View.GONE);//ponemos el segundo a tab invisible
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment((ElementoProducido) elemento),null)
                         .setReorderingAllowed(true).commit();
                 break;
             case "MATERIAPRIMA":
 
-
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment((MateriaPrima) eva.elementoList.get(position)),null)
                         .setReorderingAllowed(true).commit();
-
                 break;
 
         }
-        TabLayout tabLayout = findViewById(R.id.tabs);
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -127,19 +123,6 @@ public class DisplayActivity extends AppCompatActivity {
 
             }
         });
-        //System.out.println("llego");
-
-        //System.out.println("asdfasdf: "+i);
-        /*TabLayout.Tab tab1 = tabLayout.getTabAt(0);
-        TabLayout.Tab tab2 = tabLayout.getTabAt(2);
-        if(tab1.isSelected()){
-            System.out.println("heyyyy");
-        }else if(tab2.isSelected()){
-            System.out.println("ooooooooooo");
-        }*/
-
-
-
 
     }
     public void volver(View view) {
