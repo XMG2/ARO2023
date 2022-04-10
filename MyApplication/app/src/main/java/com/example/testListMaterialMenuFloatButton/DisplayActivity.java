@@ -96,7 +96,7 @@ public class DisplayActivity extends AppCompatActivity {
 
 
                                 fragmentManager.beginTransaction()
-                                        .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment((MateriaPrima) eva.elementoList.get(position)),null)
+                                        .replace(R.id.fragmentContainerView,new MateriaPrimaModifyFragment((MateriaPrima) elemento,eva.elementoList,position),null)
                                         .setReorderingAllowed(true).commit();
 
                                 break;

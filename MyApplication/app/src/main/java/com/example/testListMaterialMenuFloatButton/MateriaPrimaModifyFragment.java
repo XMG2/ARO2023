@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.testListMaterialMenuFloatButton.Modelos.Elemento;
 import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
@@ -14,17 +16,15 @@ import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
 
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MateriaPrimaModifyFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MateriaPrimaModifyFragment extends Fragment {
 
     private String nombre,descripcion;
     private int cantidad,position;
     private List<Elemento> list;
-    public MateriaPrimaModifyFragment() {
+    TextView textView1,textView2,textView3;
+
+    public MateriaPrimaModifyFragment(MateriaPrima materiaPrima) {
         // Required empty public constructor
     }
     public MateriaPrimaModifyFragment(MateriaPrima materiaPrima, List<Elemento> list, int position){
@@ -35,37 +35,51 @@ public class MateriaPrimaModifyFragment extends Fragment {
         this.list=list;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MateriaPrimaModifyFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MateriaPrimaModifyFragment newInstance(String param1, String param2) {
-        MateriaPrimaModifyFragment fragment = new MateriaPrimaModifyFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_materia_prima_modify, container, false);
+        View view = inflater.inflate(R.layout.fragment_herramienta_modify,container,false);
+        textView1 = (TextView)view.findViewById(R.id.editTextTextPersonName10);
+        textView2 = (TextView)view.findViewById(R.id.editTextTextMultiLine4);
+        textView3 = (TextView)view.findViewById(R.id.editTextNumber4);
+        textView1.setText(nombre);
+        textView2.setText(descripcion);
+        textView3.setText(""+cantidad);
+        Button button = (Button) view.findViewById(R.id.button8);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cantidad =  Integer.parseInt(textView3.getText().toString()) +1;
+                textView3.setText(""+cantidad);
+            }
+        });
+        Button button1 = (Button) view.findViewById(R.id.button7);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int cantidad;
+                cantidad =  Integer.parseInt(textView3.getText().toString());
+                if(cantidad>1) {
+                    cantidad--;
+                    textView3.setText(""+cantidad);
+                }
+            }
+        });
+        Button button2 = (Button) view.findViewById(R.id.eliminar);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nombre = textView1.getText().toString();
+                descripcion = textView2.getText().toString();
+                cantidad = Integer.parseInt(textView3.getText().toString());
+                list.get(position).setCantidad(cantidad);
+                list.get(position).setNombre(nombre);
+                list.get(position).setDescripcion(descripcion);
+                getActivity().onBackPressed();
+
+            }
+        });
+        return view;
     }
 }
