@@ -2,12 +2,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.materialdesign.MainActivity">
-
-    <item
-        android:id="@+id/action_new"
-        android:title="@string/new_string"></item>
-
-    <item
-        android:id="@+id/action_reload"
-        android:title="@string/reload_list"></item>
+    <item  android:id="@+id/materiaPrima"
+        android:title="@string/addMateriaPrima"></item>
+    <item android:id="@+id/herramienta"
+        android:title="@string/herramienta"></item>
+    <item android:id="@+id/elementoProducido"
+        android:title="@string/produccion"></item>
 </menu>

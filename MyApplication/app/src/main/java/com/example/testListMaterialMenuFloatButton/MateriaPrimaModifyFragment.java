@@ -8,6 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.testListMaterialMenuFloatButton.Modelos.Elemento;
+import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
+import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
+
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MateriaPrimaModifyFragment#newInstance} factory method to
@@ -15,17 +21,18 @@ import android.view.ViewGroup;
  */
 public class MateriaPrimaModifyFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    private String nombre,descripcion;
+    private int cantidad,position;
+    private List<Elemento> list;
     public MateriaPrimaModifyFragment() {
         // Required empty public constructor
+    }
+    public MateriaPrimaModifyFragment(MateriaPrima materiaPrima, List<Elemento> list, int position){
+        nombre = materiaPrima.getNombre();
+        descripcion = materiaPrima.getDescripcion();
+        cantidad = materiaPrima.getCantidad();
+        this.position = position;
+        this.list=list;
     }
 
     /**

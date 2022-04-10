@@ -92,12 +92,6 @@ public class DisplayActivity extends AppCompatActivity {
                                         .replace(R.id.fragmentContainerView,new HerramientaModifyFragment((Herramienta) elemento,eva.elementoList,position),null)
                                         .setReorderingAllowed(true).commit();
                                 break;
-                            case "ELEMENTOPRODUCIDO":
-
-                                fragmentManager.beginTransaction()
-                                        .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment((ElementoProducido) elemento),null)
-                                        .setReorderingAllowed(true).commit();
-                                break;
                             case "MATERIAPRIMA":
 
 

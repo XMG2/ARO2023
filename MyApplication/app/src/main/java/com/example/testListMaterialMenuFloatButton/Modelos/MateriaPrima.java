@@ -14,7 +14,7 @@ public class MateriaPrima extends Elemento {
         super(nombre, descripcion,cantidad,Tipo.MATERIAPRIMA);
         this.compuesto = compuesto;
         this.tamano = new Tamano(alto,ancho,largo);
-        ////
+
     }
 
     public Compuesto getCompuesto() {
@@ -35,6 +35,7 @@ public class MateriaPrima extends Elemento {
     public void setTamano(Tamano tamano) {
         this.tamano = tamano;
     }
+
 
     @Override
     public String toString() {

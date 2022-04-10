@@ -115,16 +115,22 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         switch (item.getItemId()) {
 
-            case R.id.action_reload: {
-                eva.elementoList.clear();
-                todoItemsAdapter.notifyDataSetChanged();
-                break;
-            }
-            case R.id.action_new: {
-                Intent intent = new Intent(getApplicationContext(), AddNameActivity.class);
+            case R.id.herramienta: {
+                Intent intent = new Intent(getApplicationContext(), AddHerramientaActivity.class);
                 startActivityForResult(intent, SHOW_ADDACTIVITY);
                 break;
             }
+            case R.id.materiaPrima: {
+                Intent intent = new Intent(getApplicationContext(), AddMateriaPrimaActivity.class);
+                startActivityForResult(intent, SHOW_ADDACTIVITY);
+                break;
+            }
+            case R.id.elementoProducido:{
+                Intent intent = new Intent(getApplicationContext(), AddElementoProducidoActivity.class);
+                startActivityForResult(intent, SHOW_ADDACTIVITY);
+                break;
+            }
+
         }
         return super.onOptionsItemSelected(item);
     }

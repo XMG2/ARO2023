@@ -10,10 +10,10 @@
         android:id="@+id/floatingActionButton7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:clickable="true"
         android:onClick="volver"
         app:backgroundTint="#1565C0"
-        android:layout_gravity="bottom"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
     <com.google.android.material.appbar.AppBarLayout

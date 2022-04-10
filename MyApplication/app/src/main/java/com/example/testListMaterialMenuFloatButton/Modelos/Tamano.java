@@ -60,6 +60,14 @@ public  class Tamano{
         this.largo = largo;
     }
 
+    public String getTipo() {
+        return ""+tipo.toString();
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public String toString() {
         if (tipo == Tipo.CILINDRO) {
