@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         listView = (ListView) findViewById(R.id.listview);
         eva = (ElementosDeViajeApp)getApplicationContext();
-        eva.elementoList.add(new MateriaPrima("materia","cofasdf", MateriaPrima.Compuesto.ALUMINIO,2.0,2.0,2));
+        /*eva.elementoList.add(new MateriaPrima("materia","cofasdf", MateriaPrima.Compuesto.ALUMINIO,2.0,2.0,2));
         eva.elementoList.add(new Herramienta("fasdf","fasfs", 2, Herramienta.Funcion.APRETAR));
-        eva.elementoList.add(new ElementoProducido("asdfasdf","fasdfas",1,"asdfasdfasdf",30.0));
+        eva.elementoList.add(new ElementoProducido("asdfasdf","fasdfas",1,"asdfasdfasdf",30.0));*/
         todoItemsAdapter = new ElementoAdapter(this, eva.elementoList);
 
         listView.setAdapter(todoItemsAdapter);
@@ -52,9 +52,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("position", position);
+
                 //System.out.println(eva.elementoList.get(position).getTipo(1));
                 Elemento elemento = eva.elementoList.get(position);
+                bundle.putString("idElemento",elemento.getIdElemento());
+                bundle.putString("tipo",elemento.getTipo(1));
+                bundle.putInt("position",position);
                 Intent intent;
                 switch (elemento.getTipo(1)){
                     case "HERRAMIENTA":
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     }
 //      /\
 //     /  \
-//   (|  o |)
+//   (| O  |)
 //    |    |
 //    |    |
 //    L____|
@@ -139,10 +142,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-            //System.out.println("uwu");
             todoItemsAdapter.notifyDataSetChanged();
-            //System.out.println("Prueba de que llega aqui");
         }
     }
+
 
 }

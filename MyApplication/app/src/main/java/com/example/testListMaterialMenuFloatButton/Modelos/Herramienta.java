@@ -1,26 +1,42 @@
 package com.example.testListMaterialMenuFloatButton.Modelos;
 
-public class Herramienta extends Elemento{
-    public enum Funcion{CORTE,SOLDADURA,ATORNILLAR,GOLPE,APRETAR,MEDIR,LIJA}
-    Funcion funcion;
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+@ParseClassName("Herramienta")
+public class Herramienta extends ParseObject {
+    public Herramienta(){
 
-    public Herramienta(String nombre, String descripcion, int cantidad, Funcion funcion) {
-        super(nombre, descripcion, cantidad,Tipo.HERRAMIENTA);
-        this.funcion = funcion;
     }
 
-    public Funcion getFuncion() {
-        return funcion;
+    public Herramienta(String nombre, String descripcion, int cantidad, String funcion) {
+        put("Nombre",nombre);
+        put("Descripcion",descripcion);
+        put("Funcion",funcion);
+        put("Cantidad",cantidad);
+    }
+    public void setNombre(String nombre){
+        put("Nombre",nombre);
+    }
+    public String getNombre(){
+        return getString("Nombre");
+    }
+    public void setDescripcion(String descripcion){
+        put("Descripcion",descripcion);
+    }
+    public String getDescripcion(){
+        return getString("Descripcion");
+    }
+    public String getFuncion() {
+        return getString("Funcion");
     }
 
-    public void setFuncion(Funcion funcion) {
-        this.funcion = funcion;
+    public void setFuncion(String funcion) {
+        put("Funcion",funcion);
     }
-
-    @Override
-    public String toString() {
-        return nombre + "\nDescripcion:" + descripcion +
-                "\nCantidad=" + cantidad +
-                "\n" + funcion ;
+    public void setCantidad(int cantidad){
+        put("Cantidad",cantidad);
+    }
+    public int getCantidad(){
+        return getInt("Cantidad");
     }
 }

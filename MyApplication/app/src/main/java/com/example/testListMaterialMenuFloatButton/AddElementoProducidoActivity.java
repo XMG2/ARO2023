@@ -7,14 +7,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import com.example.testListMaterialMenuFloatButton.Modelos.Elemento;
 import com.example.testListMaterialMenuFloatButton.Modelos.ElementoProducido;
 import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
+import com.parse.ParseException;
+import com.parse.SaveCallback;
 
 import java.awt.font.NumericShaper;
 import java.util.List;
@@ -83,6 +87,8 @@ public class AddElementoProducidoActivity extends AppCompatActivity {
         int cantidad;
         double precio;
         String nombre,descripcion,compuesto;
+        String [] idElemento = new String[1];
+        ElementoProducido elementoProducido;
         editText = (EditText) findViewById(R.id.editTextTextPersonName8);
         nombre = editText.getText().toString();
         editText2 = (EditText) findViewById(R.id.editTextTextMultiLine3);
@@ -93,8 +99,21 @@ public class AddElementoProducidoActivity extends AppCompatActivity {
         precio = picker.getValue()/100.0;
         editText3 = (EditText)findViewById(R.id.editTextNumber3);
         cantidad =  Integer.parseInt(editText3.getText().toString());
-        eva.elementoList.add(new ElementoProducido(nombre,descripcion,cantidad,compuesto,precio));
+        elementoProducido = new ElementoProducido(nombre,descripcion,cantidad,compuesto,precio);
         Intent intent = new Intent();
+        elementoProducido.saveEventually(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Log.v("Object saved in server"+elementoProducido.getObjectId(),"newParseObject()");
+                    idElemento[0] = elementoProducido.getObjectId();
+                } else {
+                    Log.v("failed saved to server"+ e.getMessage(),"newParseObject()");
+                }
+
+            }
+        });
+        eva.elementoList.add(new Elemento(nombre,descripcion,cantidad, "ELEMENTOPRODUCIDO",idElemento[0]));
         setResult(RESULT_OK, intent);
         finish();
     }

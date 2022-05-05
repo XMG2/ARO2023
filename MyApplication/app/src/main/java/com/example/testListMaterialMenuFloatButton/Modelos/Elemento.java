@@ -4,19 +4,33 @@ public class Elemento {
     String nombre;
     String descripcion;
     int cantidad;
-    enum Tipo{MATERIAPRIMA,HERRAMIENTA,ELEMENTOPRODUCIDO}
+    enum Tipo{MATERIAPRIMA,HERRAMIENTA,ELEMENTOPRODUCIDO};
     Tipo tipo;
-    public Elemento(String nombre, String descripcion, int cantidad) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.cantidad = cantidad;
-    }
+    String idElemento;
 
     public Elemento(String nombre, String descripcion, int cantidad, Tipo tipo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.tipo = tipo;
+    }
+    public Elemento(String nombre, String descripcion, int cantidad, String tipo,String idElemento) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.cantidad = cantidad;
+        this.idElemento=idElemento;
+        switch (tipo){
+            case "MATERIAPRIMA":
+                this.tipo=Tipo.MATERIAPRIMA;
+                break;
+            case "HERRAMIENTA":
+                this.tipo=Tipo.HERRAMIENTA;
+                break;
+            case "ELEMENTOPRODUCIDO":
+                this.tipo=Tipo.ELEMENTOPRODUCIDO;
+                break;
+        }
+
     }
 
     public String getNombre() {
@@ -59,4 +73,11 @@ public class Elemento {
         return "" + nombre + ":\n" + descripcion + "\ncantidad: "+cantidad;
     }
 
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
 }

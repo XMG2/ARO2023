@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
 import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 
 public class MateriaPrimaDisplayFragment extends Fragment {
@@ -25,12 +28,22 @@ public class MateriaPrimaDisplayFragment extends Fragment {
     public MateriaPrimaDisplayFragment() {
         // Required empty public constructor
     }
-    public MateriaPrimaDisplayFragment(MateriaPrima materia){
-        nombre = materia.getNombre();
-        descripcion = materia.getDescripcion();
-        compuesto = materia.getCompuesto().toString();
-        volumen = ""+materia.getVolumen();
-        cantidad = materia.getCantidad();
+    public MateriaPrimaDisplayFragment(String elementoId){
+        ParseQuery<MateriaPrima> query = ParseQuery.getQuery("MateriaPrima");
+        query.getInBackground(elementoId, new GetCallback<MateriaPrima>() {
+            public void done(MateriaPrima materia, ParseException e) {
+                if (e == null) {
+                    nombre = materia.getNombre();
+                    descripcion = materia.getDescripcion();
+                    compuesto = materia.getCompuesto();
+                    volumen = ""+materia.getVolumen();
+                    cantidad = materia.getCantidad();
+                } else {
+                    // something went wrong
+                }
+            }
+        });
+
     }
 
 

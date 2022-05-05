@@ -17,9 +17,13 @@ import com.example.testListMaterialMenuFloatButton.Modelos.ElementoProducido;
 import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
 import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
 import com.google.android.material.tabs.TabLayout;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 public class DisplayActivity extends AppCompatActivity {
     private ElementosDeViajeApp eva;
+    private Herramienta herramienta1;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,27 +33,38 @@ public class DisplayActivity extends AppCompatActivity {
         eva = (ElementosDeViajeApp) getApplicationContext();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+        String idElemento = bundle.getString("idElemento");
+        String tipo = bundle.getString("tipo");
         int position = bundle.getInt("position");
-        Elemento elemento = eva.elementoList.get(position);
         FragmentManager fragmentManager = getSupportFragmentManager();
-        switch (elemento.getTipo(1)){
+        switch (tipo){
             case "HERRAMIENTA":
+                ParseQuery<Herramienta> query = ParseQuery.getQuery("Herramienta");
+                query.getInBackground(""+idElemento, new GetCallback<Herramienta>() {
+                    public void done(Herramienta herramienta, ParseException e) {
+                        if (e == null) {
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.fragmentContainerView,new HerramientaDisplayFragment(herramienta),null)
+                                    .setReorderingAllowed(true).commit();
+                        } else {
+                            System.out.println("-------------\nAlgo ha ido mal\n---------");
+                            System.out.println(e);
+                        }
+                    }
+                });
 
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView,new HerramientaDisplayFragment((Herramienta) elemento),null)
-                        .setReorderingAllowed(true).commit();
                 break;
             case "ELEMENTOPRODUCIDO":
 
                 tabLayout.getTabAt(1).view.setVisibility(View.GONE);//ponemos el segundo a tab invisible
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment((ElementoProducido) elemento),null)
+                        .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment(idElemento),null)
                         .setReorderingAllowed(true).commit();
                 break;
             case "MATERIAPRIMA":
 
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment((MateriaPrima) eva.elementoList.get(position)),null)
+                        .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment(idElemento),null)
                         .setReorderingAllowed(true).commit();
                 break;
 
@@ -60,24 +75,33 @@ public class DisplayActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 switch(tabLayout.getSelectedTabPosition()){
                     case 0:
-                        switch (elemento.getTipo(1)){
+                        switch (tipo){
                             case "HERRAMIENTA":
-
-                                fragmentManager.beginTransaction()
-                                        .replace(R.id.fragmentContainerView,new HerramientaDisplayFragment((Herramienta) elemento),null)
-                                        .setReorderingAllowed(true).commit();
+                                ParseQuery<Herramienta> query = ParseQuery.getQuery("Herramienta");
+                                query.getInBackground(""+idElemento, new GetCallback<Herramienta>() {
+                                    public void done(Herramienta herramienta, ParseException e) {
+                                        if (e == null) {
+                                            fragmentManager.beginTransaction()
+                                                    .replace(R.id.fragmentContainerView,new HerramientaDisplayFragment(herramienta),null)
+                                                    .setReorderingAllowed(true).commit();
+                                        } else {
+                                            System.out.println("-------------\nAlgo ha ido mal\n---------");
+                                            System.out.println(e);
+                                        }
+                                    }
+                                });
                                 break;
                             case "ELEMENTOPRODUCIDO":
 
                                 fragmentManager.beginTransaction()
-                                        .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment((ElementoProducido) elemento),null)
+                                        .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment(idElemento),null)
                                         .setReorderingAllowed(true).commit();
                                 break;
                             case "MATERIAPRIMA":
 
 
                                 fragmentManager.beginTransaction()
-                                        .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment((MateriaPrima) eva.elementoList.get(position)),null)
+                                        .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment(idElemento),null)
                                         .setReorderingAllowed(true).commit();
 
                                 break;
@@ -85,18 +109,28 @@ public class DisplayActivity extends AppCompatActivity {
                         }
                         break;
                     case 1:
-                        switch (elemento.getTipo(1)){
+                        switch (tipo){
                             case "HERRAMIENTA":
+                                ParseQuery<Herramienta> query = ParseQuery.getQuery("Herramienta");
+                                query.getInBackground(""+idElemento, new GetCallback<Herramienta>() {
+                                    public void done(Herramienta herramienta, ParseException e) {
+                                        if (e == null) {
+                                            fragmentManager.beginTransaction()
+                                                    .replace(R.id.fragmentContainerView,new HerramientaModifyFragment(herramienta,eva.elementoList,position),null)
+                                                    .setReorderingAllowed(true).commit();
+                                        } else {
+                                            System.out.println("-------------\nAlgo ha ido mal\n---------");
+                                            System.out.println(e);
+                                        }
+                                    }
+                                });
 
-                                fragmentManager.beginTransaction()
-                                        .replace(R.id.fragmentContainerView,new HerramientaModifyFragment((Herramienta) elemento,eva.elementoList,position),null)
-                                        .setReorderingAllowed(true).commit();
                                 break;
                             case "MATERIAPRIMA":
 
 
                                 fragmentManager.beginTransaction()
-                                        .replace(R.id.fragmentContainerView,new MateriaPrimaModifyFragment((MateriaPrima) elemento,eva.elementoList,position),null)
+                                        .replace(R.id.fragmentContainerView,new MateriaPrimaModifyFragment(idElemento),null)
                                         .setReorderingAllowed(true).commit();
 
                                 break;

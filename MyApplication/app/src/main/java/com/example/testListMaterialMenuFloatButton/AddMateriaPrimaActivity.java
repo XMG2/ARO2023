@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,15 +17,17 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
+import com.example.testListMaterialMenuFloatButton.Modelos.Elemento;
 import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
+import com.parse.ParseException;
+import com.parse.SaveCallback;
 
 
 public class AddMateriaPrimaActivity extends AppCompatActivity {
     ElementosDeViajeApp eva;
     TextView alto,ancho,largo,diametro;
     RadioGroup radioGroup;
-    MateriaPrima.Compuesto compuesto;
+    String compuesto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,25 +87,25 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
                 //System.out.println(spinner.getSelectedItemId());
                 switch ((int)spinner.getSelectedItemId()) {
                     case 1:
-                        compuesto = MateriaPrima.Compuesto.ALUMINIO;
+                        compuesto = "ALUMINIO";
                         break;
                     case 2:
-                        compuesto = MateriaPrima.Compuesto.ACERO;
+                        compuesto = "ACERO";
                         break;
                     case 3:
-                        compuesto = MateriaPrima.Compuesto.TITANIO;
+                        compuesto = "TITANIO";
                         break;
                     case 4:
-                        compuesto = MateriaPrima.Compuesto.CARBONO;
+                        compuesto = "CARBONO";
                         break;
                     case 5:
-                        compuesto = MateriaPrima.Compuesto.NETHERITE;
+                        compuesto = "NETHERITE";
                         break;
                     case 6:
-                        compuesto = MateriaPrima.Compuesto.NUKA_COLA;
+                        compuesto = "NUKA_COLA";
                         break;
                     case 7:
-                        compuesto = MateriaPrima.Compuesto.VIBRANIUM;
+                        compuesto = "VIBRANIUM";
                         break;
                 }
             }
@@ -113,8 +116,10 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
 
     public void addMateriaPrima(View view) {
         String nombre,descripcion;
+        final String[] idElemento = new String[1];
         Double diametro,largo,alto,ancho;
         int cantidad;
+        MateriaPrima materia;
         EditText editText,editText2,editText3,editText4,editText5,editText6,editText7;
         switch (radioGroup.getCheckedRadioButtonId()){
             case(R.id.radioButton3):
@@ -128,8 +133,20 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
                 largo =Double.parseDouble(editText4.getText().toString());
                 editText5 = (EditText) findViewById(R.id.editTextNumber);
                 cantidad =  Integer.parseInt(editText5.getText().toString());
-                eva.elementoList.add(new MateriaPrima(nombre,descripcion,compuesto,diametro,largo,cantidad));
+                materia = new MateriaPrima(nombre,descripcion,compuesto,diametro,largo,cantidad);
+                materia.saveEventually(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            Log.v("Object saved in server"+materia.getObjectId(),"newParseObject()");
+                            idElemento[0] = materia.getObjectId();
+                        } else {
+                            Log.v("failed saved to server"+ e.getMessage(),"newParseObject()");
+                        }
 
+                    }
+                });
+                eva.elementoList.add(new Elemento(nombre,descripcion,cantidad, "MATERIAPRIMA",idElemento[0]));
                 break;
             case(R.id.radioButton5):
                 editText6 = (EditText) findViewById(R.id.editTextTextPersonName6);
@@ -144,8 +161,20 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
                 ancho = Double.parseDouble(editText5.getText().toString());
                 editText7 = (EditText) findViewById(R.id.editTextNumber);
                 cantidad =  Integer.parseInt(editText7.getText().toString());
-                eva.elementoList.add(new MateriaPrima(nombre,descripcion,compuesto,alto,ancho,largo,cantidad));
-                //System.out.println(composicion+descripcion+diametro+largo);
+                materia = new MateriaPrima(nombre,descripcion,compuesto,alto,ancho,largo,cantidad);
+                materia.saveEventually(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            Log.v("Object saved in server"+materia.getObjectId(),"newParseObject()");
+                            idElemento[0] = materia.getObjectId();
+                        } else {
+                            Log.v("failed saved to server"+ e.getMessage(),"newParseObject()");
+                        }
+
+                    }
+                });
+                eva.elementoList.add(new Elemento(nombre,descripcion,cantidad, "MATERIAPRIMA",idElemento[0]));
                 break;
         }
         Intent intent = new Intent();

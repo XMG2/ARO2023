@@ -10,16 +10,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
+import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 
 public class HerramientaDisplayFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
 
     private String nombre,descripcion,funcion;
     private int cantidad;
@@ -29,8 +26,9 @@ public class HerramientaDisplayFragment extends Fragment {
     public HerramientaDisplayFragment(Herramienta herramienta){
         nombre = herramienta.getNombre();
         descripcion = herramienta.getDescripcion();
-        funcion = ""+herramienta.getFuncion();
+        funcion = herramienta.getFuncion();
         cantidad = herramienta.getCantidad();
+
     }
 
 

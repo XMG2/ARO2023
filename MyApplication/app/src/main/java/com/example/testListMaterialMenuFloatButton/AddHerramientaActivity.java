@@ -6,16 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.testListMaterialMenuFloatButton.Modelos.Elemento;
 import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
+import com.parse.ParseException;
+import com.parse.SaveCallback;
 
 public class AddHerramientaActivity extends AppCompatActivity {
-    Herramienta.Funcion funcion;
+    String funcion;
     ElementosDeViajeApp eva;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,25 +37,25 @@ public class AddHerramientaActivity extends AppCompatActivity {
                 System.out.println(spinner.getSelectedItemId());
                 switch ((int)spinner.getSelectedItemId()) {
                     case 1:
-                        funcion = Herramienta.Funcion.CORTE;
+                        funcion = "CORTE";
                         break;
                     case 2:
-                        funcion = Herramienta.Funcion.SOLDADURA;
+                        funcion = "SOLDADURA";
                         break;
                     case 3:
-                        funcion = Herramienta.Funcion.ATORNILLAR;
+                        funcion = "ATORNILLAR";
                         break;
                     case 4:
-                        funcion = Herramienta.Funcion.GOLPE;
+                        funcion = "GOLPE";
                         break;
                     case 5:
-                        funcion = Herramienta.Funcion.APRETAR;
+                        funcion = "APRETAR";
                         break;
                     case 6:
-                        funcion = Herramienta.Funcion.MEDIR;
+                        funcion = "MEDIR";
                         break;
                     case 7:
-                        funcion = Herramienta.Funcion.LIJA;
+                        funcion = "LIJA";
                         break;
                 }
             }
@@ -89,14 +93,29 @@ public class AddHerramientaActivity extends AppCompatActivity {
         EditText editText,editText2,editText3;
         int cantidad;
         String nombre,descripcion;
+        Herramienta herramienta;
+        final String[] idElemento = new String[1];
         editText = (EditText) findViewById(R.id.editTextTextPersonName7);
         nombre = editText.getText().toString();
         editText2 = (EditText) findViewById(R.id.editTextTextMultiLine2);
         descripcion =editText2.getText().toString();
         editText3 = (EditText)findViewById(R.id.editTextNumber2);
         cantidad =  Integer.parseInt(editText3.getText().toString());
-        eva.elementoList.add(new Herramienta(nombre,descripcion,cantidad,funcion));
+        herramienta = new Herramienta(nombre,descripcion,cantidad,funcion);
         Intent intent = new Intent();
+        herramienta.saveEventually(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Log.v("Object saved in server"+herramienta.getObjectId(),"newParseObject()");
+                    idElemento[0] = herramienta.getObjectId();
+                } else {
+                    Log.v("failed saved to server"+ e.getMessage(),"newParseObject()");
+                }
+
+            }
+        });
+        eva.elementoList.add(new Elemento(nombre,descripcion,cantidad, "HERRAMIENTA",idElemento[0]));
         setResult(RESULT_OK, intent);
         finish();
 

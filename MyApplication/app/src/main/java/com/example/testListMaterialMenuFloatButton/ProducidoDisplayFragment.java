@@ -9,7 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.testListMaterialMenuFloatButton.Modelos.Elemento;
 import com.example.testListMaterialMenuFloatButton.Modelos.ElementoProducido;
+import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 
 public class ProducidoDisplayFragment extends Fragment {
@@ -20,12 +25,21 @@ public class ProducidoDisplayFragment extends Fragment {
     public ProducidoDisplayFragment() {
         // Required empty public constructor
     }
-    public ProducidoDisplayFragment(ElementoProducido materia){
-        nombre = materia.getNombre();
-        descripcion = materia.getDescripcion();
-        compuesto = materia.getCompuesto();
-        //volumen = ""+materia.getVolumen();
-        cantidad = materia.getCantidad();
+    public ProducidoDisplayFragment(String elementoId ){
+        ParseQuery<ElementoProducido> query = ParseQuery.getQuery("ElementoProducido");
+        query.getInBackground(elementoId, new GetCallback<ElementoProducido>() {
+            public void done(ElementoProducido producido, ParseException e) {
+                if (e == null) {
+                    nombre = producido.getNombre();
+                    descripcion = producido.getDescripcion();
+                    cantidad = producido.getCantidad();
+                    compuesto = producido.getCompuesto();
+
+                } else {
+                    // something went wrong
+                }
+            }
+        });
     }
 
 
