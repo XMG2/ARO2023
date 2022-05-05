@@ -1,8 +1,10 @@
 package com.example.testListMaterialMenuFloatButton;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,11 @@ import com.example.testListMaterialMenuFloatButton.Modelos.Herramienta;
 import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
 import com.example.testListMaterialMenuFloatButton.databinding.ActivityMainBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,23 +44,73 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Toolbar toolbar = binding.toolbar;
+        Context context = this;
 
         setSupportActionBar(toolbar);
         listView = (ListView) findViewById(R.id.listview);
         eva = (ElementosDeViajeApp)getApplicationContext();
-        /*eva.elementoList.add(new MateriaPrima("materia","cofasdf", MateriaPrima.Compuesto.ALUMINIO,2.0,2.0,2));
-        eva.elementoList.add(new Herramienta("fasdf","fasfs", 2, Herramienta.Funcion.APRETAR));
-        eva.elementoList.add(new ElementoProducido("asdfasdf","fasdfas",1,"asdfasdfasdf",30.0));*/
-        todoItemsAdapter = new ElementoAdapter(this, eva.elementoList);
+        todoItemsAdapter = new ElementoAdapter(context, eva.elementoList);
 
+        FloatingActionButton fab = binding.fab;
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),
+                        SeleccionarTipoActivity.class);
+                startActivityForResult(intent, SHOW_ADDACTIVITY);
+            }
+        }); ParseQuery<Herramienta> query = ParseQuery.getQuery("Herramienta");
+        query.findInBackground(new FindCallback<Herramienta>() {
+            public void done(List<Herramienta> scoreList, ParseException e) {
+                if (e == null) {
+                    Log.d("score", "Retrieved " + scoreList.size() + " scores");
+                    for(int i = 0; i< scoreList.size();i++){
+
+                        eva.elementoList.add(new Elemento(scoreList.get(i).getNombre(),scoreList.get(i).getDescripcion(),scoreList.get(i).getCantidad(),"HERRAMIENTA",scoreList.get(i).getObjectId()));
+                        todoItemsAdapter.notifyDataSetChanged();
+
+                    }
+                } else {
+                    Log.d("score", "Error: " + e.getMessage());
+                }
+            }
+        });
+        ParseQuery<MateriaPrima> query2 = ParseQuery.getQuery("MateriaPrima");
+        query2.findInBackground(new FindCallback<MateriaPrima>() {
+            public void done(List<MateriaPrima> scoreList, ParseException e) {
+                if (e == null) {
+                    Log.d("score", "Retrieved " + scoreList.size() + " scores");
+                    for(int i = 0; i< scoreList.size();i++){
+
+                        eva.elementoList.add(new Elemento(scoreList.get(i).getNombre(),scoreList.get(i).getDescripcion(),scoreList.get(i).getCantidad(),"MATERIAPRIMA",scoreList.get(i).getObjectId()));
+                        todoItemsAdapter.notifyDataSetChanged();
+
+                    }
+                } else {
+                    Log.d("score", "Error: " + e.getMessage());
+                }
+            }
+        });
+        ParseQuery<ElementoProducido> query3 = ParseQuery.getQuery("ElementoProducido");
+        query3.findInBackground(new FindCallback<ElementoProducido>() {
+            public void done(List<ElementoProducido> scoreList, ParseException e) {
+                if (e == null) {
+                    Log.d("score", "Retrieved " + scoreList.size() + " scores");
+                    for(int i = 0; i< scoreList.size();i++){
+                        eva.elementoList.add(new Elemento(scoreList.get(i).getNombre(),scoreList.get(i).getDescripcion(),scoreList.get(i).getCantidad(),"ELEMENTOPRODUCIDO",scoreList.get(i).getObjectId()));
+                        todoItemsAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    Log.d("score", "Error: " + e.getMessage());
+                }
+            }
+        });
         listView.setAdapter(todoItemsAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-
-                //System.out.println(eva.elementoList.get(position).getTipo(1));
                 Elemento elemento = eva.elementoList.get(position);
                 bundle.putString("idElemento",elemento.getIdElemento());
                 bundle.putString("tipo",elemento.getTipo(1));
@@ -80,18 +137,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtras(bundle);
                 startActivityForResult(intent, SHOW_SUBACTIVITY);
 
-            }
-        });
-
-
-
-        FloatingActionButton fab = binding.fab;
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),
-                        SeleccionarTipoActivity.class);
-                startActivityForResult(intent, SHOW_ADDACTIVITY);
             }
         });
     }

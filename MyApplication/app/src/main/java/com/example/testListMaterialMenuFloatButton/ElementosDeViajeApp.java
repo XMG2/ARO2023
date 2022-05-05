@@ -34,47 +34,7 @@ ElementosDeViajeApp extends Application {
                 .clientKey("empty")
                 .server("https://parseservertunombre.herokuapp.com/parse/")   // '/' important after 'parse'
                 .build());
-        ParseQuery<Herramienta> query = ParseQuery.getQuery("Herramienta");
-        query.findInBackground(new FindCallback<Herramienta>() {
-            public void done(List<Herramienta> scoreList, ParseException e) {
-                if (e == null) {
-                    Log.d("score", "Retrieved " + scoreList.size() + " scores");
-                    for(int i = 0; i< scoreList.size();i++){
-                        elementoList.add(new Elemento(scoreList.get(i).getNombre(),scoreList.get(i).getDescripcion(),scoreList.get(i).getCantidad(),"HERRAMIENTA",scoreList.get(i).getObjectId()));
-                    }
-                } else {
-                    Log.d("score", "Error: " + e.getMessage());
-                }
-            }
-        });
-        ParseQuery<MateriaPrima> query2 = ParseQuery.getQuery("MateriaPrima");
-        query2.findInBackground(new FindCallback<MateriaPrima>() {
-            public void done(List<MateriaPrima> scoreList, ParseException e) {
-                if (e == null) {
-                    Log.d("score", "Retrieved " + scoreList.size() + " scores");
-                    for(int i = 0; i< scoreList.size();i++){
 
-                        elementoList.add(new Elemento(scoreList.get(i).getNombre(),scoreList.get(i).getDescripcion(),scoreList.get(i).getCantidad(),"MATERIAPRIMA",scoreList.get(i).getObjectId()));
-                    }
-                } else {
-                    Log.d("score", "Error: " + e.getMessage());
-                }
-            }
-        });
-        ParseQuery<ElementoProducido> query3 = ParseQuery.getQuery("ElementoProducido");
-        query3.findInBackground(new FindCallback<ElementoProducido>() {
-            public void done(List<ElementoProducido> scoreList, ParseException e) {
-                if (e == null) {
-                    Log.d("score", "Retrieved " + scoreList.size() + " scores");
-                    for(int i = 0; i< scoreList.size();i++){
-
-                        elementoList.add(new Elemento(scoreList.get(i).getNombre(),scoreList.get(i).getDescripcion(),scoreList.get(i).getCantidad(),"ELEMENTOPRODUCIDO",scoreList.get(i).getObjectId()));
-                    }
-                } else {
-                    Log.d("score", "Error: " + e.getMessage());
-                }
-            }
-        });
 
     }
 /*

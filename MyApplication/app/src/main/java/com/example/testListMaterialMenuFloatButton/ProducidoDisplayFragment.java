@@ -16,30 +16,28 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+import java.util.List;
+
 
 public class ProducidoDisplayFragment extends Fragment {
 
-
-    private String nombre,descripcion,volumen,compuesto;
-    private int cantidad;
+    protected ElementoProducido producido;
+    private String nombre,descripcion,compuesto;
+    private int cantidad, position;
+    Double precio;
+    List<Elemento> elementos;
     public ProducidoDisplayFragment() {
         // Required empty public constructor
     }
-    public ProducidoDisplayFragment(String elementoId ){
-        ParseQuery<ElementoProducido> query = ParseQuery.getQuery("ElementoProducido");
-        query.getInBackground(elementoId, new GetCallback<ElementoProducido>() {
-            public void done(ElementoProducido producido, ParseException e) {
-                if (e == null) {
-                    nombre = producido.getNombre();
-                    descripcion = producido.getDescripcion();
-                    cantidad = producido.getCantidad();
-                    compuesto = producido.getCompuesto();
-
-                } else {
-                    // something went wrong
-                }
-            }
-        });
+    public ProducidoDisplayFragment(ElementoProducido producido, List<Elemento> elementos, int position){
+        this.producido=producido;
+        this.elementos=elementos;
+        this.position=position;
+        precio = producido.getPrecio();
+        nombre = producido.getNombre();
+        descripcion = producido.getDescripcion();
+        compuesto = producido.getCompuesto();
+        cantidad = producido.getCantidad();
     }
 
 
@@ -56,7 +54,7 @@ public class ProducidoDisplayFragment extends Fragment {
         TextView textView5 = (TextView)view.findViewById(R.id.compuesto);
         textView1.setText(nombre);
         textView2.setText(descripcion);
-        textView3.setText("Precio: "+volumen);
+        textView3.setText("Precio: "+precio);
         textView4.setText("Cantidad: " + cantidad);
         textView5.setText(compuesto);
         return view;

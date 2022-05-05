@@ -28,21 +28,12 @@ public class MateriaPrimaDisplayFragment extends Fragment {
     public MateriaPrimaDisplayFragment() {
         // Required empty public constructor
     }
-    public MateriaPrimaDisplayFragment(String elementoId){
-        ParseQuery<MateriaPrima> query = ParseQuery.getQuery("MateriaPrima");
-        query.getInBackground(elementoId, new GetCallback<MateriaPrima>() {
-            public void done(MateriaPrima materia, ParseException e) {
-                if (e == null) {
-                    nombre = materia.getNombre();
-                    descripcion = materia.getDescripcion();
-                    compuesto = materia.getCompuesto();
-                    volumen = ""+materia.getVolumen();
-                    cantidad = materia.getCantidad();
-                } else {
-                    // something went wrong
-                }
-            }
-        });
+    public MateriaPrimaDisplayFragment(MateriaPrima materia){
+        nombre = materia.getNombre();
+        descripcion = materia.getDescripcion();
+        compuesto = materia.getCompuesto();
+        volumen = ""+materia.getVolumen();
+        cantidad = materia.getCantidad();
 
     }
 

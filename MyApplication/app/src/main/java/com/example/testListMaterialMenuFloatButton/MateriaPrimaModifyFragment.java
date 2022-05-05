@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.example.testListMaterialMenuFloatButton.Modelos.MateriaPrima;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -24,25 +26,20 @@ public class MateriaPrimaModifyFragment extends Fragment {
 
     private String nombre,descripcion;
     private int cantidad,position;
-    private List<Elemento> list;
+    private List<Elemento> elementos;
     TextView textView1,textView2,textView3;
+    protected MateriaPrima materia;
 
     public MateriaPrimaModifyFragment(MateriaPrima materiaPrima) {
         // Required empty public constructor
     }
-    public MateriaPrimaModifyFragment(String elementoId){
-        ParseQuery<MateriaPrima> query = ParseQuery.getQuery("MateriaPrima");
-        query.getInBackground(elementoId, new GetCallback<MateriaPrima>() {
-            public void done(MateriaPrima materia, ParseException e) {
-                if (e == null) {
-                    nombre = materia.getNombre();
-                    descripcion = materia.getDescripcion();
-                    cantidad = materia.getCantidad();
-                } else {
-                    // something went wrong
-                }
-            }
-        });
+    public MateriaPrimaModifyFragment(MateriaPrima materia,List<Elemento> elementos,int position){
+        this.materia=materia;
+        this.elementos= elementos;
+        this.position=position;
+        nombre = materia.getNombre();
+        descripcion = materia.getDescripcion();
+        cantidad = materia.getCantidad();
     }
 
     @Override
@@ -83,9 +80,20 @@ public class MateriaPrimaModifyFragment extends Fragment {
                 nombre = textView1.getText().toString();
                 descripcion = textView2.getText().toString();
                 cantidad = Integer.parseInt(textView3.getText().toString());
-                list.get(position).setCantidad(cantidad);
-                list.get(position).setNombre(nombre);
-                list.get(position).setDescripcion(descripcion);
+                elementos.get(position).setDescripcion(descripcion);
+                elementos.get(position).setCantidad(cantidad);
+                elementos.get(position).setNombre(nombre);
+                materia.saveEventually(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            Log.v("Object saved in server"+materia.getObjectId(),"newParseObject()");
+                        } else {
+                            Log.v("failed saved to server"+ e.getMessage(),"newParseObject()");
+                        }
+
+                    }
+                });
                 getActivity().onBackPressed();
 
             }

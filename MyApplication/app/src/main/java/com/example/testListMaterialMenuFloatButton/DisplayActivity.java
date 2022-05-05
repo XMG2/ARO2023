@@ -55,17 +55,35 @@ public class DisplayActivity extends AppCompatActivity {
 
                 break;
             case "ELEMENTOPRODUCIDO":
-
-                tabLayout.getTabAt(1).view.setVisibility(View.GONE);//ponemos el segundo a tab invisible
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment(idElemento),null)
-                        .setReorderingAllowed(true).commit();
+                ParseQuery<ElementoProducido> query3 = ParseQuery.getQuery("ElementoProducido");
+                query3.getInBackground(""+idElemento, new GetCallback<ElementoProducido>() {
+                    public void done(ElementoProducido producido, ParseException e) {
+                        if (e == null) {
+                            tabLayout.getTabAt(1).view.setVisibility(View.GONE);//ponemos el segundo a tab invisible
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment(producido,eva.elementoList,position),null)
+                                    .setReorderingAllowed(true).commit();
+                        } else {
+                            System.out.println("-------------\nAlgo ha ido mal\n---------");
+                            System.out.println(e);
+                        }
+                    }
+                });
                 break;
             case "MATERIAPRIMA":
-
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment(idElemento),null)
-                        .setReorderingAllowed(true).commit();
+                ParseQuery<MateriaPrima> query2 = ParseQuery.getQuery("MateriaPrima");
+                query2.getInBackground(""+idElemento, new GetCallback<MateriaPrima>() {
+                    public void done(MateriaPrima materia, ParseException e) {
+                        if (e == null) {
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment(materia),null)
+                                    .setReorderingAllowed(true).commit();
+                        } else {
+                            System.out.println("-------------\nAlgo ha ido mal\n---------");
+                            System.out.println(e);
+                        }
+                    }
+                });
                 break;
 
         }
@@ -92,20 +110,36 @@ public class DisplayActivity extends AppCompatActivity {
                                 });
                                 break;
                             case "ELEMENTOPRODUCIDO":
-
-                                fragmentManager.beginTransaction()
-                                        .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment(idElemento),null)
-                                        .setReorderingAllowed(true).commit();
+                                ParseQuery<ElementoProducido> query3 = ParseQuery.getQuery("ElementoProducido");
+                                query3.getInBackground(""+idElemento, new GetCallback<ElementoProducido>() {
+                                    public void done(ElementoProducido producido, ParseException e) {
+                                        if (e == null) {
+                                            tabLayout.getTabAt(1).view.setVisibility(View.GONE);//ponemos el segundo a tab invisible
+                                            fragmentManager.beginTransaction()
+                                                    .replace(R.id.fragmentContainerView,new ProducidoDisplayFragment(producido,eva.elementoList,position),null)
+                                                    .setReorderingAllowed(true).commit();
+                                        } else {
+                                            System.out.println("-------------\nAlgo ha ido mal\n---------");
+                                            System.out.println(e);
+                                        }
+                                    }
+                                });
                                 break;
                             case "MATERIAPRIMA":
-
-
-                                fragmentManager.beginTransaction()
-                                        .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment(idElemento),null)
-                                        .setReorderingAllowed(true).commit();
-
+                                ParseQuery<MateriaPrima> query2 = ParseQuery.getQuery("MateriaPrima");
+                                query2.getInBackground(""+idElemento, new GetCallback<MateriaPrima>() {
+                                    public void done(MateriaPrima materia, ParseException e) {
+                                        if (e == null) {
+                                            fragmentManager.beginTransaction()
+                                                    .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment(materia),null)
+                                                    .setReorderingAllowed(true).commit();
+                                        } else {
+                                            System.out.println("-------------\nAlgo ha ido mal\n---------");
+                                            System.out.println(e);
+                                        }
+                                    }
+                                });
                                 break;
-
                         }
                         break;
                     case 1:
@@ -128,11 +162,19 @@ public class DisplayActivity extends AppCompatActivity {
                                 break;
                             case "MATERIAPRIMA":
 
-
-                                fragmentManager.beginTransaction()
-                                        .replace(R.id.fragmentContainerView,new MateriaPrimaModifyFragment(idElemento),null)
-                                        .setReorderingAllowed(true).commit();
-
+                                ParseQuery<MateriaPrima> query2 = ParseQuery.getQuery("MateriaPrima");
+                                query2.getInBackground(""+idElemento, new GetCallback<MateriaPrima>() {
+                                    public void done(MateriaPrima materia, ParseException e) {
+                                        if (e == null) {
+                                            fragmentManager.beginTransaction()
+                                                    .replace(R.id.fragmentContainerView,new MateriaPrimaModifyFragment(materia,eva.elementoList,position),null)
+                                                    .setReorderingAllowed(true).commit();
+                                        } else {
+                                            System.out.println("-------------\nAlgo ha ido mal\n---------");
+                                            System.out.println(e);
+                                        }
+                                    }
+                                });
                                 break;
 
                         }
