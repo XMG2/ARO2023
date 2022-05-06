@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
                         SeleccionarTipoActivity.class);
                 startActivityForResult(intent, SHOW_ADDACTIVITY);
             }
-        }); ParseQuery<Herramienta> query = ParseQuery.getQuery("Herramienta");
+        });
+        ParseQuery<Herramienta> query = ParseQuery.getQuery("Herramienta");
         query.findInBackground(new FindCallback<Herramienta>() {
             public void done(List<Herramienta> scoreList, ParseException e) {
                 if (e == null) {

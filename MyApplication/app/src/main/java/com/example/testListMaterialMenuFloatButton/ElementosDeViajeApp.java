@@ -20,7 +20,6 @@ import java.util.List;
 public class
 ElementosDeViajeApp extends Application {
 
-
     public List<Elemento> elementoList = new ArrayList<>();
 
     @Override
@@ -35,10 +34,5 @@ ElementosDeViajeApp extends Application {
                 .server("https://parseservertunombre.herokuapp.com/parse/")   // '/' important after 'parse'
                 .build());
 
-
     }
-/*
-Para saber de que tipo es cada elemento almacenado en la lista usar "if(t instanceof XXXXXX){...}"
-*/
-
 }

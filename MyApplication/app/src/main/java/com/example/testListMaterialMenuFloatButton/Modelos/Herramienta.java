@@ -4,6 +4,7 @@ import com.parse.ParseClassName;
 import com.parse.ParseObject;
 @ParseClassName("Herramienta")
 public class Herramienta extends ParseObject {
+
     public Herramienta(){
 
     }
