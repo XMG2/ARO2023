@@ -12,7 +12,7 @@
     <string name="exitButton">Volver</string>
     <string name="materiaPrima">Añadir Materia Prima</string>
     <string name="nombre">Nombre:</string>
-    <string name="compuesto">Composición:</string>
+    <string name="tipo">Tipo:</string>
     <string name="descripcion">Descripcion:</string>
     <string name="formaCilindrica">Cilindro</string>
     <string name="formaRectangular">Rectangular</string>
@@ -34,7 +34,7 @@
     <string name="addMateriaPrima">Materia Prima</string>
     <string name="herramienta">Herramienta</string>
     <string name="produccion">Elemento Producido</string>
-    <string name="precio">Precio:(cm³/Centimos)</string>
+    <string name="precio">Precio:(cm³/€)</string>
     <string name="modificate">Modificar</string>
     <string name="display">Vista</string>
     <string name="cantidad">Cantidad:</string>
@@ -49,6 +49,36 @@
         <item>Netherite</item>
         <item>Nuka-Cola</item>
         <item>Vibranium</item>
+    </string-array>
+    <string-array name="tipoElementoProducido">
+        <item>Seleccione un tipo</item>
+        <item>Llanta</item>
+        <item>Color</item>
+    </string-array>
+
+    <string-array name="tipoColor">
+
+        <item>Blanco</item>
+        <item>Amarillo</item>
+        <item>Azul</item>
+        <item>AzulOscuro</item>
+        <item>Morado</item>
+        <item>Naranja</item>
+        <item>Rosa</item>
+        <item>Turquesa</item>
+        <item>Verde</item>
+    </string-array>
+
+    <string-array name="tipoLlanta">
+        <item>GMP WONDER</item>
+        <item>DU MANS</item>
+        <item>SPEEDLINE</item>
+        <item>OZ SUPERTURISMO</item>
+        <item>MAK NURBUG</item>
+        <item>STUTTGART</item>
+        <item>RONAL</item>
+        <item>OZ ULTRALEGGERA</item>
+        <item>TSW NURBURGRING</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

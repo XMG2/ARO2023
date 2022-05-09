@@ -81,6 +81,9 @@ public class MateriaPrimaModifyFragment extends Fragment {
                 descripcion = textView2.getText().toString();
                 cantidad = Integer.parseInt(textView3.getText().toString());
                 elementos.get(position).setDescripcion(descripcion);
+                materia.setCantidad(cantidad);
+                materia.setDescripcion(descripcion);
+                materia.setNombre(nombre);
                 elementos.get(position).setCantidad(cantidad);
                 elementos.get(position).setNombre(nombre);
                 materia.saveEventually(new SaveCallback() {

@@ -36,6 +36,7 @@ public class AddHerramientaActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 System.out.println(spinner.getSelectedItemId());
                 switch ((int)spinner.getSelectedItemId()) {
+
                     case 1:
                         funcion = "CORTE";
                         break;

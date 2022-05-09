@@ -8,10 +8,10 @@ public class ElementoProducido extends ParseObject {
     public ElementoProducido(){
 
     }
-    public ElementoProducido(String nombre, String descripcion, int cantidad, String compuesto, Double precio) {
+    public ElementoProducido(String nombre, String descripcion, int cantidad, String tipo, Double precio) {
+        put("Tipo",tipo);
         put("Nombre",nombre);
         put("Descripcion",descripcion);
-        put("Compuesto",compuesto);
         put("Precio",precio);
         put("Cantidad",cantidad);
     }/*
@@ -39,10 +39,10 @@ public class ElementoProducido extends ParseObject {
         return getInt("Cantidad");
     }
     public String getCompuesto() {
-        return getString("Compuesto");
+        return getString("Tipo");
     }
-    public void setCompuesto(String compuesto) {
-        put("Compuesto",compuesto);
+    public void setTipo(String tipo) {
+        put("Tipo",tipo);
     }
 
     public Double getPrecio() {
