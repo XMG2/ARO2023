@@ -177,6 +177,7 @@ public class AddElementoProducidoActivity extends AppCompatActivity {
     public void addHerramienta(View view) {
         int[] precioscolor = {100, 200, 200, 500, 300, 400, 600, 100, 200};
         int[] preciosrueda = {500, 2000, 1000, 2000, 6000, 4000, 6000, 1000, 2000};
+        Elemento el;
         if(llanta!=null || color!=null) {
             EditText editText, editText2, editText3;
             double precio;
@@ -190,11 +191,11 @@ public class AddElementoProducidoActivity extends AppCompatActivity {
             if(tipoElemento=="Color"){
                 precio=precioscolor[nombreColor.indexOf(color)];
                 elementoProducido = new ElementoProducido(color, descripcion, cantidad, tipoElemento, precio);
-                eva.elementoList.add(new Elemento(color, descripcion, cantidad, "ELEMENTOPRODUCIDO", idElemento[0]));
+                el=new Elemento(color, descripcion, cantidad, "ELEMENTOPRODUCIDO", idElemento[0]);
             } else {
                 precio=preciosrueda[nombreRueda.indexOf(llanta)];
                 elementoProducido = new ElementoProducido(llanta, descripcion, cantidad, tipoElemento, precio);
-                eva.elementoList.add(new Elemento(llanta, descripcion, cantidad, "ELEMENTOPRODUCIDO", idElemento[0]));
+                el=new Elemento(llanta, descripcion, cantidad, "ELEMENTOPRODUCIDO", idElemento[0]);
             }
             Intent intent = new Intent();
             elementoProducido.saveEventually(new SaveCallback() {
@@ -203,13 +204,13 @@ public class AddElementoProducidoActivity extends AppCompatActivity {
                     if (e == null) {
                         Log.v("Object saved in server" + elementoProducido.getObjectId(), "newParseObject()");
                         idElemento[0] = elementoProducido.getObjectId();
+                        eva.elementoList.add(el);
                     } else {
                         Log.v("failed saved to server" + e.getMessage(), "newParseObject()");
                     }
 
                 }
             });
-
             setResult(RESULT_OK, intent);
             finish();
         }

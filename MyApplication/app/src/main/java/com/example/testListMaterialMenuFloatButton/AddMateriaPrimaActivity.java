@@ -140,13 +140,17 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
                         if (e == null) {
                             Log.v("Object saved in server"+materia.getObjectId(),"newParseObject()");
                             idElemento[0] = materia.getObjectId();
+                            System.out.println("\n\nHe guardado\n\n"+idElemento[0]+"\n\n");
+                            eva.elementoList.add(new Elemento(nombre,descripcion,cantidad, "MATERIAPRIMA",idElemento[0]));
                         } else {
+                            System.out.println("#############################");
                             Log.v("failed saved to server"+ e.getMessage(),"newParseObject()");
                         }
 
                     }
                 });
-                eva.elementoList.add(new Elemento(nombre,descripcion,cantidad, "MATERIAPRIMA",idElemento[0]));
+
+
                 break;
             case(R.id.radioButton5):
                 editText6 = (EditText) findViewById(R.id.editTextTextPersonName6);

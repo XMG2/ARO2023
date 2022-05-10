@@ -22,7 +22,7 @@ import java.util.List;
 public class ProducidoDisplayFragment extends Fragment {
 
     protected ElementoProducido producido;
-    private String nombre,descripcion,compuesto;
+    private String nombre,descripcion;
     private int cantidad, position;
     Double precio;
     List<Elemento> elementos;
@@ -36,7 +36,6 @@ public class ProducidoDisplayFragment extends Fragment {
         precio = producido.getPrecio();
         nombre = producido.getNombre();
         descripcion = producido.getDescripcion();
-        compuesto = producido.getCompuesto();
         cantidad = producido.getCantidad();
     }
 
@@ -56,7 +55,6 @@ public class ProducidoDisplayFragment extends Fragment {
         textView2.setText(descripcion);
         textView3.setText("Precio: "+precio);
         textView4.setText("Cantidad: " + cantidad);
-        textView5.setText(compuesto);
         return view;
     }
 }

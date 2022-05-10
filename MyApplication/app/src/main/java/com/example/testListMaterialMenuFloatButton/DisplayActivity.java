@@ -43,6 +43,7 @@ public class DisplayActivity extends AppCompatActivity {
                 query.getInBackground(""+idElemento, new GetCallback<Herramienta>() {
                     public void done(Herramienta herramienta, ParseException e) {
                         if (e == null) {
+                            System.out.println(herramienta.getNombre());
                             fragmentManager.beginTransaction()
                                     .replace(R.id.fragmentContainerView,new HerramientaDisplayFragment(herramienta),null)
                                     .setReorderingAllowed(true).commit();
@@ -71,10 +72,14 @@ public class DisplayActivity extends AppCompatActivity {
                 });
                 break;
             case "MATERIAPRIMA":
+                System.out.println("--------------"+idElemento);
                 ParseQuery<MateriaPrima> query2 = ParseQuery.getQuery("MateriaPrima");
                 query2.getInBackground(""+idElemento, new GetCallback<MateriaPrima>() {
+
                     public void done(MateriaPrima materia, ParseException e) {
                         if (e == null) {
+                            System.out.println(materia.getNombre());
+
                             fragmentManager.beginTransaction()
                                     .replace(R.id.fragmentContainerView,new MateriaPrimaDisplayFragment(materia),null)
                                     .setReorderingAllowed(true).commit();

@@ -110,13 +110,14 @@ public class AddHerramientaActivity extends AppCompatActivity {
                 if (e == null) {
                     Log.v("Object saved in server"+herramienta.getObjectId(),"newParseObject()");
                     idElemento[0] = herramienta.getObjectId();
+                    eva.elementoList.add(new Elemento(nombre,descripcion,cantidad, "HERRAMIENTA",idElemento[0]));
                 } else {
                     Log.v("failed saved to server"+ e.getMessage(),"newParseObject()");
                 }
 
             }
         });
-        eva.elementoList.add(new Elemento(nombre,descripcion,cantidad, "HERRAMIENTA",idElemento[0]));
+
         setResult(RESULT_OK, intent);
         finish();
 

@@ -60,6 +60,38 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, SHOW_ADDACTIVITY);
             }
         });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                Elemento elemento = eva.elementoList.get(position);
+                System.out.println("#####################"+elemento.getIdElemento());
+                bundle.putString("idElemento",elemento.getIdElemento());
+                bundle.putString("tipo",elemento.getTipo(1));
+                bundle.putInt("position",position);
+                Intent intent;
+                switch (elemento.getTipo(1)){
+                    case "HERRAMIENTA":
+                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
+                        break;
+                    case "ELEMENTOPRODUCIDO":
+                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
+
+                        break;
+                    case "MATERIAPRIMA":
+                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
+
+                        break;
+                    default:
+                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
+                        intent.putExtras(bundle);
+                        startActivityForResult(intent, SHOW_SUBACTIVITY);
+                }
+                intent.putExtras(bundle);
+                startActivityForResult(intent, SHOW_SUBACTIVITY);
+
+            }
+        });
         ParseQuery<Herramienta> query = ParseQuery.getQuery("Herramienta");
         query.findInBackground(new FindCallback<Herramienta>() {
             public void done(List<Herramienta> scoreList, ParseException e) {
@@ -108,38 +140,7 @@ public class MainActivity extends AppCompatActivity {
         });
         listView.setAdapter(todoItemsAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Bundle bundle = new Bundle();
-                Elemento elemento = eva.elementoList.get(position);
-                bundle.putString("idElemento",elemento.getIdElemento());
-                bundle.putString("tipo",elemento.getTipo(1));
-                bundle.putInt("position",position);
-                Intent intent;
-                switch (elemento.getTipo(1)){
-                    case "HERRAMIENTA":
-                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
 
-                        break;
-                    case "ELEMENTOPRODUCIDO":
-                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
-
-                        break;
-                    case "MATERIAPRIMA":
-                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
-
-                        break;
-                    default:
-                        intent = new Intent(getApplicationContext(), DisplayActivity.class);
-                        intent.putExtras(bundle);
-                        startActivityForResult(intent, SHOW_SUBACTIVITY);
-                }
-                intent.putExtras(bundle);
-                startActivityForResult(intent, SHOW_SUBACTIVITY);
-
-            }
-        });
     }
 //      /\
 //     /  \
@@ -190,7 +191,10 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == Activity.RESULT_OK) {
             todoItemsAdapter.notifyDataSetChanged();
         }
+        System.out.println("\n\n@@@@@@@@@@@@@@@@@@@@@@@\n\n");
+        for (Elemento elemento: eva.elementoList
+             ) {
+            System.out.println(elemento.getIdElemento()+"\n");
+        };
     }
-
-
 }

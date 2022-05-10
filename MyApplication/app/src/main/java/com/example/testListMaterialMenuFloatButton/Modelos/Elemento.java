@@ -8,12 +8,12 @@ public class Elemento {
     Tipo tipo;
     String idElemento;
 
-    public Elemento(String nombre, String descripcion, int cantidad, Tipo tipo) {
+    /*public Elemento(String nombre, String descripcion, int cantidad, Tipo tipo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.tipo = tipo;
-    }
+    }*/
     public Elemento(String nombre, String descripcion, int cantidad, String tipo,String idElemento) {
         this.nombre = nombre;
         this.descripcion = descripcion;
