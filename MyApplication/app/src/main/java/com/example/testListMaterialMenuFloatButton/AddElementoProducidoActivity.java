@@ -181,10 +181,11 @@ public class AddElementoProducidoActivity extends AppCompatActivity {
         if(llanta!=null || color!=null) {
             EditText editText, editText2, editText3;
             double precio;
-            String descripcion, compuesto;
+            String descripcion;
             String[] idElemento = new String[1];
             ElementoProducido elementoProducido;
-
+            editText = (EditText) findViewById(R.id.editTextNumber3);
+            cantidad =  Integer.parseInt(editText.getText().toString()) +1;
             editText2 = (EditText) findViewById(R.id.editTextTextMultiLine3);
             descripcion = editText2.getText().toString();
 
