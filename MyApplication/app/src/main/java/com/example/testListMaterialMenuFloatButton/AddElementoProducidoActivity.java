@@ -192,10 +192,12 @@ public class AddElementoProducidoActivity extends AppCompatActivity {
                 precio=precioscolor[nombreColor.indexOf(color)];
                 elementoProducido = new ElementoProducido(color, descripcion, cantidad, tipoElemento, precio);
                 el=new Elemento(color, descripcion, cantidad, "ELEMENTOPRODUCIDO", idElemento[0]);
+                eva.elementoList.add(el);
             } else {
                 precio=preciosrueda[nombreRueda.indexOf(llanta)];
                 elementoProducido = new ElementoProducido(llanta, descripcion, cantidad, tipoElemento, precio);
                 el=new Elemento(llanta, descripcion, cantidad, "ELEMENTOPRODUCIDO", idElemento[0]);
+                eva.elementoList.add(el);
             }
             Intent intent = new Intent();
             elementoProducido.saveEventually(new SaveCallback() {
@@ -204,7 +206,7 @@ public class AddElementoProducidoActivity extends AppCompatActivity {
                     if (e == null) {
                         Log.v("Object saved in server" + elementoProducido.getObjectId(), "newParseObject()");
                         idElemento[0] = elementoProducido.getObjectId();
-                        eva.elementoList.add(el);
+                        eva.elementoList.get(eva.elementoList.indexOf(el)).setIdElemento(idElemento[0]);
                     } else {
                         Log.v("failed saved to server" + e.getMessage(), "newParseObject()");
                     }

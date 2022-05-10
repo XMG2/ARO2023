@@ -120,6 +120,7 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
         Double diametro,largo,alto,ancho;
         int cantidad;
         MateriaPrima materia;
+        Elemento el;
         EditText editText,editText2,editText3,editText4,editText5,editText6,editText7;
         switch (radioGroup.getCheckedRadioButtonId()){
             case(R.id.radioButton3):
@@ -134,6 +135,8 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
                 editText5 = (EditText) findViewById(R.id.editTextNumber);
                 cantidad =  Integer.parseInt(editText5.getText().toString());
                 materia = new MateriaPrima(nombre,descripcion,compuesto,diametro,largo,cantidad);
+                el=new Elemento(nombre,descripcion,cantidad, "MATERIAPRIMA",idElemento[0]);
+                eva.elementoList.add(el);
                 materia.saveEventually(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
@@ -141,7 +144,7 @@ public class AddMateriaPrimaActivity extends AppCompatActivity {
                             Log.v("Object saved in server"+materia.getObjectId(),"newParseObject()");
                             idElemento[0] = materia.getObjectId();
                             System.out.println("\n\nHe guardado\n\n"+idElemento[0]+"\n\n");
-                            eva.elementoList.add(new Elemento(nombre,descripcion,cantidad, "MATERIAPRIMA",idElemento[0]));
+                            eva.elementoList.get(eva.elementoList.indexOf(el)).setIdElemento(idElemento[0]);
                         } else {
                             System.out.println("#############################");
                             Log.v("failed saved to server"+ e.getMessage(),"newParseObject()");

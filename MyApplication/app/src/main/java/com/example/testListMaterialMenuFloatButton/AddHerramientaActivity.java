@@ -96,6 +96,7 @@ public class AddHerramientaActivity extends AppCompatActivity {
         String nombre,descripcion;
         Herramienta herramienta;
         final String[] idElemento = new String[1];
+        Elemento el;
         editText = (EditText) findViewById(R.id.editTextTextPersonName7);
         nombre = editText.getText().toString();
         editText2 = (EditText) findViewById(R.id.editTextTextMultiLine2);
@@ -103,6 +104,8 @@ public class AddHerramientaActivity extends AppCompatActivity {
         editText3 = (EditText)findViewById(R.id.editTextNumber2);
         cantidad =  Integer.parseInt(editText3.getText().toString());
         herramienta = new Herramienta(nombre,descripcion,cantidad,funcion);
+        el = new Elemento(nombre,descripcion,cantidad, "HERRAMIENTA",idElemento[0]);
+        eva.elementoList.add(el);
         Intent intent = new Intent();
         herramienta.saveEventually(new SaveCallback() {
             @Override
@@ -110,7 +113,7 @@ public class AddHerramientaActivity extends AppCompatActivity {
                 if (e == null) {
                     Log.v("Object saved in server"+herramienta.getObjectId(),"newParseObject()");
                     idElemento[0] = herramienta.getObjectId();
-                    eva.elementoList.add(new Elemento(nombre,descripcion,cantidad, "HERRAMIENTA",idElemento[0]));
+                    eva.elementoList.get(eva.elementoList.indexOf(el)).setIdElemento(idElemento[0]);
                 } else {
                     Log.v("failed saved to server"+ e.getMessage(),"newParseObject()");
                 }
