@@ -104,7 +104,7 @@ public class AddHerramientaActivity extends AppCompatActivity {
         editText3 = (EditText)findViewById(R.id.editTextNumber2);
         cantidad =  Integer.parseInt(editText3.getText().toString());
         herramienta = new Herramienta(nombre,descripcion,cantidad,funcion);
-        el = new Elemento(nombre,descripcion,cantidad, "HERRAMIENTA",idElemento[0]);
+        el = new Elemento(nombre,descripcion,cantidad,"HERRAMIENTA",idElemento[0]);
         eva.elementoList.add(el);
         Intent intent = new Intent();
         herramienta.saveEventually(new SaveCallback() {
