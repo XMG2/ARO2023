@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sociedad Gastronomica</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="new_string">New String</string>
+    <string name="reload_list">Reload Strings</string>
+</resources>
