@@ -33,9 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Estas 3 lineas de codigo siempre lo primero
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
         listView = (ListView) findViewById(R.id.listview);
         tpa = (TravelPointsApplication)getApplicationContext();
 
