@@ -11,7 +11,6 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.sociedadgastronomica.Modelos.Consumicion;
 import com.example.sociedadgastronomica.Modelos.Producto;
 
 import sociedadgastronomica.R;

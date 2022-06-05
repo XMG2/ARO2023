@@ -8,8 +8,7 @@ import com.example.sociedadgastronomica.Modelos.Producto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class
-TravelPointsApplication extends Application {
+public class TravelPointsApplication extends Application {
 
 
     public List<Consumicion> consumiciones = new ArrayList<>();

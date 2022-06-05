@@ -18,12 +18,10 @@ package="sociedadgastronomica">
         android:exported="true" />
     <activity
         android:name="com.example.sociedadgastronomica.ProductosActivity"
-        android:exported="true"
-        />
+        android:exported="true" />
     <activity
         android:name="com.example.sociedadgastronomica.NuevoProductoActivity"
-        android:exported="true"
-        />
+        android:exported="true" />
     <activity
         android:name="com.example.sociedadgastronomica.MainActivity"
         android:exported="true"
@@ -35,6 +33,5 @@ package="sociedadgastronomica">
     </activity>
 
 </application>
-
 </manifest>
 

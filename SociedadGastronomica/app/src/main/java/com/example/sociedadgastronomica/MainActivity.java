@@ -23,11 +23,9 @@ import sociedadgastronomica.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    //public List<String> nameList;
     private ListView listView;
     TextView precioTotalView,precioPersona;
     EditText numPersonas;
-    public ArrayAdapter<String> adapter;
     private static final int SHOW_SUBACTIVITY = 1;
     TravelPointsApplication tpa;
     ArrayAdapter<Consumicion> todoItemsAdapter;
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         listView = (ListView) findViewById(R.id.listview);
         tpa = (TravelPointsApplication)getApplicationContext();
 
@@ -49,18 +46,6 @@ public class MainActivity extends AppCompatActivity {
         todoItemsAdapter = new ArrayAdapter<Consumicion>(this, R.layout.row_layout, R.id.listText, tpa.consumiciones);
 
         listView.setAdapter(todoItemsAdapter);
-
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("position", position);
-                Intent intent = new Intent(getApplicationContext(), ConsumicionActivity.class);
-                intent.putExtras(bundle);
-                startActivityForResult(intent, SHOW_SUBACTIVITY);
-            }
-        });*/
-
 
 
         FloatingActionButton fab = binding.fab;
@@ -73,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         numPersonas = (EditText) findViewById(R.id.numPersonas);
-        numPersonas.setText(""+1);
+        numPersonas.setText(String.format("%s", 1));
         precioTotalView = (TextView)findViewById(R.id.precioTotal);
         precioTotalPagar =precioTotal();
-        precioTotalView.setText(""+precioTotalPagar);
+        precioTotalView.setText(String.format("%s", precioTotalPagar));
         precioPersona = (TextView)findViewById(R.id.precioPersona);
 
         numPersonas.addTextChangedListener(new TextWatcher() {
@@ -92,19 +77,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                //Compruebo si hay algo antes de operar con el valor
                 if(editable.toString().length()<1) {
                     numPersonas.setError("Introduce un número");
                 } else {
                     int num = Integer.parseInt(editable.toString());
-                    precioPersona.setText("" + precioTotalPagar / num);
+                    precioPersona.setText(String.format("%s", precioTotalPagar/num));
                 }
             }
         });
+
     }
-
-
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

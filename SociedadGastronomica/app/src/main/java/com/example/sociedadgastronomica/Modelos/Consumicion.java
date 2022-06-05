@@ -2,9 +2,9 @@ package com.example.sociedadgastronomica.Modelos;
 
 public class Consumicion {
 
-    Producto producto;
-    int cantidad;
-    double precio;
+    private Producto producto;
+    private int cantidad;
+    private double precio;
 
     public Consumicion(){
     }
@@ -37,7 +37,7 @@ public class Consumicion {
     }
 
     public void setPrecio(int cantidad) {
-        this.precio = producto.precio*cantidad;
+        this.precio = producto.getPrecio()*cantidad;
     }
 
     @Override

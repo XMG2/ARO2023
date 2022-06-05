@@ -28,7 +28,7 @@
       android:layout_height="wrap_content"
       android:inputType="textShortMessage|text"
       android:minHeight="48dp"
-      android:text="TextView"
+      android:hint="Inserte nombre"
       app:layout_constraintBottom_toTopOf="@+id/precioProducto"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.459"
@@ -43,7 +43,7 @@
       android:inputType="number|numberDecimal"
       android:minHeight="48dp"
 
-      android:text="TextView"
+      android:hint="1"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.459"

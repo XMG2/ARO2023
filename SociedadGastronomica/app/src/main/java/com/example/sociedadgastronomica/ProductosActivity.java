@@ -44,7 +44,6 @@ public class ProductosActivity extends AppCompatActivity {
             }
         });
     }
-
     public void goBack(View view) {
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);

@@ -1,8 +1,8 @@
 package com.example.sociedadgastronomica.Modelos;
 
 public class Producto {
-    String nombre;
-    double precio;
+    private String nombre;
+    private double precio;
 
 
     public Producto(){

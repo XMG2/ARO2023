@@ -1,14 +1,12 @@
 package com.example.sociedadgastronomica;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.example.sociedadgastronomica.Modelos.Consumicion;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.sociedadgastronomica.Modelos.Producto;
 
 import sociedadgastronomica.R;
@@ -38,12 +36,12 @@ public class NuevoProductoActivity extends AppCompatActivity {
             editText1.setText(nombre);
 
             editText2.setText(String.format("%s", precio));
-        } else{
+        } /*else{
             nombre = "Inserte Nombre";
             precio = 1;
-            editText1.setText(nombre);
-            editText2.setText(String.format("%s", precio));
-        }
+            editText1.setHint(nombre);
+            editText2.setHint(String.format("%s", precio));
+        }*/
     }
     public void addProducto(View view){
         double pre;
@@ -54,7 +52,6 @@ public class NuevoProductoActivity extends AppCompatActivity {
                 Producto producto = tpa.productos.get(posicion);
                 producto.setPrecio(pre);
                 producto.setNombre(editText1.getText().toString());
-                //tpa.productos.set(posicion,producto);
                 Intent intent = new Intent();
                 setResult(RESULT_OK, intent);
                 finish();
