@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">Inventario 2.0</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+    </string>
+    <string name="action_settings">Settings</string>
+    <string name="new_string">Nuevo elemento</string>
+    <string name="reload_list">Borrar lista</string>
+    <string name="buttonPrimaS">Materia Prima</string>
+    <string name="buttonHerramientaS">Herramienta</string>
+    <string name="buttonProducidoS">Elemento Producido</string>
+    <string name="exitButton">Volver</string>
+    <string name="materiaPrima">Añadir Materia Prima</string>
+    <string name="nombre">Nombre:</string>
+    <string name="tipo">Tipo:</string>
+    <string name="descripcion">Descripcion:</string>
+    <string name="formaCilindrica">Cilindro</string>
+    <string name="formaRectangular">Rectangular</string>
+    <string name="alto">Alto</string>
+    <string name="ancho">Ancho</string>
+    <string name="largo">Largo</string>
+    <string name="diametro">Diametro</string>
+    <string name="funcion">Función:</string>
+    <string-array name="funcionesHerramienta">
+        <item>Seleccione función</item>
+        <item>Corte</item>
+        <item>Soldadura</item>
+        <item>Atornillar</item>
+        <item>Golpe</item>
+        <item>Apretar</item>
+        <item>Medir</item>
+        <item>Lija</item>
+    </string-array>
+    <string name="addMateriaPrima">Materia Prima</string>
+    <string name="herramienta">Herramienta</string>
+    <string name="produccion">Elemento Producido</string>
+    <string name="precio">Precio:(cm³/€)</string>
+    <string name="modificate">Modificar</string>
+    <string name="display">Vista</string>
+    <string name="cantidad">Cantidad:</string>
+    <string name="delete">Eliminar</string>
+    <string name="terminar">Terminar</string>
+    <string-array name="composicionMateria">
+        <item>Seleccione función</item>
+        <item>Aluminio</item>
+        <item>Acero</item>
+        <item>Titanio</item>
+        <item>Carbono</item>
+        <item>Netherite</item>
+        <item>Nuka-Cola</item>
+        <item>Vibranium</item>
+    </string-array>
+    <string-array name="tipoElementoProducido">
+        <item>Seleccione un tipo</item>
+        <item>Llanta</item>
+        <item>Color</item>
+    </string-array>
+
+    <string-array name="tipoColor">
+
+        <item>Blanco</item>
+        <item>Amarillo</item>
+        <item>Azul</item>
+        <item>AzulOscuro</item>
+        <item>Morado</item>
+        <item>Naranja</item>
+        <item>Rosa</item>
+        <item>Turquesa</item>
+        <item>Verde</item>
+    </string-array>
+
+    <string-array name="tipoLlanta">
+        <item>GMP WONDER</item>
+        <item>DU MANS</item>
+        <item>SPEEDLINE</item>
+        <item>OZ SUPERTURISMO</item>
+        <item>MAK NURBUG</item>
+        <item>STUTTGART</item>
+        <item>RONAL</item>
+        <item>OZ ULTRALEGGERA</item>
+        <item>TSW NURBURGRING</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
